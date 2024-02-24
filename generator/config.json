@@ -2,12 +2,12 @@
     "ontologies": [
         {
             "name": "FOAF", 
-            "path": "./ontologies/foaf.jsonld",
+            "path": "foaf.jsonld",
             "format": "JSON-LD" 
         },
         {
             "name": "Schema.org",
-            "path": "./ontologies/schema.jsonld",
+            "path": "schema.jsonld",
             "format": "JSON-LD" 
         }
     ]
