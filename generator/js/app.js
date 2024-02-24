@@ -31,6 +31,10 @@ function loadOntologies() {
 // Function to fetch and parse an ontology (Modified for RDF/JSON-LD)
 function loadOntology(ontologyInfo) {
     const { name, turtleUri, jsonldUri, prefix } = ontologyInfo;
+    if (!turtleUri) {
+        console.error(`Turtle URI is missing for ontology: ${name}`);
+        return;
+    }
     const absoluteTurtleUri = new URL(turtleUri, window.location.origin).href;
 
     fetch(absoluteTurtleUri)
@@ -44,7 +48,12 @@ function loadOntology(ontologyInfo) {
         .then(data => {
             // Parse the RDF/JSON-LD data into a graph
             const graph = $rdf.graph();
-            $rdf.parse(data, graph, absoluteTurtleUri, 'text/turtle');
+            try {
+                $rdf.parse(data, graph, absoluteTurtleUri, 'text/turtle');
+            } catch (parseError) {
+                console.error('Error parsing RDF data:', parseError);
+                throw new Error('Error parsing RDF data');
+            }
 
             // Check if the graph is empty or undefined
             if (!graph || graph.length === 0) {
