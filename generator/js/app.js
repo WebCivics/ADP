@@ -39,19 +39,34 @@ function loadOntology(ontologyInfo) {
 
     const absoluteJsonLdUri = new URL(jsonldUri, window.location.origin).href;
 
-    fetch(absoluteJsonLdUri)
-        .then(response => response.json())
-        .then(jsonData => {
-            const graph = $rdf.graph();  // Create a graph
+// ...
 
-            // Note: You'll likely need a JSON-LD parser here. 
-            // Example using 'jsonld' library:
-            const nquads = jsonld.toRDF(jsonData, { format: 'application/nquads' });
-            $rdf.parse(nquads, graph, absoluteJsonLdUri, 'application/nquads');
+fetch(absoluteJsonldUri)
+    .then(response => {
+        if (!response.ok) {
+            console.error(`Failed to load ontology (${response.status}): ${response.statusText || 'Unknown error'}`);
+            throw new Error('Failed to load ontology');
+        }
+        return response.json(); // Parse as JSON
+    })
+    .then(data => {
+        // Parse the JSON-LD data into a graph
+        const graph = $rdf.graph();
+        $rdf.parse(data, graph, absoluteJsonldUri, 'application/ld+json'); // Specify the correct content type
 
-            buildForm(graph, name); 
-        })
-        .catch(error => console.error('Error loading ontology:', error));
+        // Check if the graph is empty or undefined
+        if (!graph || graph.length === 0) {
+            console.error(`No data loaded for ontology: ${name}`);
+            throw new Error('No data loaded for ontology');
+        }
+
+        // Call the buildForm function with the graph and ontologyName
+        buildForm(graph, name);
+    })
+    .catch(error => console.error('Error loading ontology:', error));
+
+// ...
+
 }
 
 // Helper functions
