@@ -12,7 +12,7 @@ const RDF = $rdf.Namespace('http://www.w3.org/1999/02/22-rdf-syntax-ns#');
 const RDFS = $rdf.Namespace('http://www.w3.org/2000/01/rdf-schema#');
 
 // Global to store the Fetcher
-let fetcher = new $rdf.Fetcher(); 
+let fetcher = new $rdf.Fetcher();
 
 // Function to fetch and populate ontologies
 function loadOntologies() {
@@ -21,35 +21,48 @@ function loadOntologies() {
         .then(config => {
             config.ontologies.forEach(ontology => {
                 let option = document.createElement('option');
-                option.value = JSON.stringify(ontology); 
+                option.value = JSON.stringify(ontology); // Pass the entire ontology info
                 option.text = ontology.name;
                 ontologySelect.add(option);
             });
         })
         .catch(error => console.error('Error loading ontologies:', error));
 }
-
-// Function to fetch and parse an ontology (Modified for JSON-LD)
+// Function to fetch and parse an ontology (Modified for RDF/JSON-LD)
 function loadOntology(ontologyInfo) {
-    const { name,  jsonldUri } = ontologyInfo; 
-    if (!jsonldUri) {
-        console.error(`JSON-LD URI is missing for ontology: ${name}`);
+    const { name, turtleUri, jsonldUri, prefix } = ontologyInfo;
+    if (!turtleUri) {
+        console.error(`Turtle URI is missing for ontology: ${name}`);
         return;
     }
+    const absoluteTurtleUri = new URL(turtleUri, window.location.origin).href;
 
-    const absoluteJsonLdUri = new URL(jsonldUri, window.location.origin).href;
+    fetch(absoluteTurtleUri)
+        .then(response => {
+            if (!response.ok) {
+                console.error(`Failed to load ontology (${response.status}): ${response.statusText || 'Unknown error'}`);
+                throw new Error('Failed to load ontology');
+            }
+            return response.text();
+        })
+        .then(data => {
+            // Parse the RDF/JSON-LD data into a graph
+            const graph = $rdf.graph();
+            try {
+                $rdf.parse(data, graph, absoluteTurtleUri, 'text/turtle');
+            } catch (parseError) {
+                console.error('Error parsing RDF data:', parseError);
+                throw new Error('Error parsing RDF data');
+            }
 
-    fetch(absoluteJsonLdUri)
-        .then(response => response.json())
-        .then(jsonData => {
-            const graph = $rdf.graph();  // Create a graph
+            // Check if the graph is empty or undefined
+            if (!graph || graph.length === 0) {
+                console.error(`No data loaded for ontology: ${name}`);
+                throw new Error('No data loaded for ontology');
+            }
 
-            // Note: You'll likely need a JSON-LD parser here. 
-            // Example using 'jsonld' library:
-            const nquads = jsonld.toRDF(jsonData, { format: 'application/nquads' });
-            $rdf.parse(nquads, graph, absoluteJsonLdUri, 'application/nquads');
-
-            buildForm(graph, name); 
+            // Call the buildForm function with the graph and ontologyName
+            buildForm(graph, name);
         })
         .catch(error => console.error('Error loading ontology:', error));
 }
