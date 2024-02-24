@@ -29,45 +29,42 @@ function loadOntologies() {
         .catch(error => console.error('Error loading ontologies:', error));
 }
 
-// Function to fetch and parse an ontology (Modified for JSON-LD)
+// Function to fetch and parse an ontology (Modified for RDF/JSON-LD)
 function loadOntology(ontologyInfo) {
-    const { name,  jsonldUri } = ontologyInfo; 
+    const { name, jsonldUri, prefix } = ontologyInfo;
+
     if (!jsonldUri) {
         console.error(`JSON-LD URI is missing for ontology: ${name}`);
         return;
     }
 
-    const absoluteJsonLdUri = new URL(jsonldUri, window.location.origin).href;
+    const absoluteJsonldUri = new URL(jsonldUri, window.location.origin).href;
 
-// ...
+    fetch(absoluteJsonldUri)
+        .then(response => {
+            if (!response.ok) {
+                console.error(`Failed to load ontology (${response.status}): ${response.statusText || 'Unknown error'}`);
+                throw new Error('Failed to load ontology');
+            }
+            return response.json(); // Parse as JSON
+        })
+        .then(data => {
+            // Parse the JSON-LD data into a graph
+            const graph = $rdf.graph();
+            $rdf.parse(data, graph, absoluteJsonldUri, 'application/ld+json'); // Specify the correct content type
 
-fetch(absoluteJsonldUri)
-    .then(response => {
-        if (!response.ok) {
-            console.error(`Failed to load ontology (${response.status}): ${response.statusText || 'Unknown error'}`);
-            throw new Error('Failed to load ontology');
-        }
-        return response.json(); // Parse as JSON
-    })
-    .then(data => {
-        // Parse the JSON-LD data into a graph
-        const graph = $rdf.graph();
-        $rdf.parse(data, graph, absoluteJsonldUri, 'application/ld+json'); // Specify the correct content type
+            // Check if the graph is empty or undefined
+            if (!graph || graph.length === 0) {
+                console.error(`No data loaded for ontology: ${name}`);
+                throw new Error('No data loaded for ontology');
+            }
 
-        // Check if the graph is empty or undefined
-        if (!graph || graph.length === 0) {
-            console.error(`No data loaded for ontology: ${name}`);
-            throw new Error('No data loaded for ontology');
-        }
-
-        // Call the buildForm function with the graph and ontologyName
-        buildForm(graph, name);
-    })
-    .catch(error => console.error('Error loading ontology:', error));
-
-// ...
-
+            // Call the buildForm function with the graph and ontologyName
+            buildForm(graph, name);
+        })
+        .catch(error => console.error('Error loading ontology:', error));
 }
+
 
 // Helper functions
 function clearForm() {
