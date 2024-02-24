@@ -30,38 +30,57 @@ function loadOntologies() {
 }
 
 // Function to fetch and parse an ontology (Modified for RDF/JSON-LD)
-function loadOntology(path) {
-    const ontologyName = path.split('/').pop().split('.')[0];
-    const absolutePath = new URL(path, window.location.origin).href;
+function loadOntology(ontologyInfo) {
+    const { name, turtleUri, jsonldUri, prefix } = ontologyInfo;
+    const absoluteTurtleUri = new URL(turtleUri, window.location.origin).href;
 
-    fetch(absolutePath)
+    fetch(absoluteTurtleUri)
         .then(response => {
             if (!response.ok) {
                 console.error(`Failed to load ontology (${response.status}): ${response.statusText || 'Unknown error'}`);
                 throw new Error('Failed to load ontology');
             }
-            return response.json();
+            return response.text();
         })
         .then(data => {
             console.log('Data loaded:', data);
 
             // Parse the RDF/JSON-LD data into a graph
             const graph = $rdf.graph();
-            $rdf.parse(data, graph, absolutePath, 'application/ld+json');
+            $rdf.parse(data, graph, absoluteTurtleUri, 'text/turtle');
 
             // Check if the graph is empty or undefined
             if (!graph || graph.length === 0) {
-                console.error(`No data loaded for ontology: ${ontologyName}`);
+                console.error(`No data loaded for ontology: ${name}`);
                 throw new Error('No data loaded for ontology');
             }
 
             // Call the buildForm function with the graph and ontologyName
-            buildForm(graph, ontologyName);
+            buildForm(graph, name);
         })
         .catch(error => console.error('Error loading ontology:', error));
 }
 
+// Function to fetch and populate ontologies
+function loadOntologies() {
+    fetch('config.json')
+        .then(response => response.json())
+        .then(config => {
+            config.ontologies.forEach(ontology => {
+                let option = document.createElement('option');
+                option.value = JSON.stringify(ontology); // Pass the entire ontology info
+                option.text = ontology.name;
+                ontologySelect.add(option);
+            });
+        })
+        .catch(error => console.error('Error loading ontologies:', error));
+}
 
+// Event listener for ontology select
+ontologySelect.addEventListener('change', () => {
+    const selectedOntologyInfo = JSON.parse(ontologySelect.value);
+    loadOntology(selectedOntologyInfo);
+});
 
 // Helper functions
 function clearForm() {

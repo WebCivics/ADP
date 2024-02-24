@@ -1,14 +1,16 @@
 {
     "ontologies": [
-        {
-            "name": "FOAF", 
-            "path": "foaf.jsonld",
-            "format": "JSON-LD" 
-        },
-        {
-            "name": "Schema.org",
-            "path": "schema.jsonld",
-            "format": "JSON-LD" 
-        }
-    ]
-}
+      {
+        "name": "FOAF",
+        "turtleUri": "https://webcivics.github.io/ontologies/ttl/xmlns/foaf.ttl",
+        "jsonldUri": "https://webcivics.github.io/ontologies/jsonld/xmlns/foaf.jsonld",
+        "prefix": "foaf"
+      },
+      {
+        "name": "Schema.org",
+        "turtleUri": "https://webcivics.github.io/ttl/schemaorg/schema.ttl",
+        "jsonldUri": "https://webcivics.github.io/ontologies/jsonld/schemaorg/schema.jsonld",
+        "prefix": "schema"
+      }   ]
+  }
+  
