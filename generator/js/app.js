@@ -21,7 +21,7 @@ function loadOntologies() {
         .then(config => {
             config.ontologies.forEach(ontology => {
                 let option = document.createElement('option');
-                option.value = ontology.path;
+                option.value = JSON.stringify(ontology); // Pass the entire ontology info
                 option.text = ontology.name;
                 ontologySelect.add(option);
             });
@@ -43,8 +43,6 @@ function loadOntology(ontologyInfo) {
             return response.text();
         })
         .then(data => {
-            console.log('Data loaded:', data);
-
             // Parse the RDF/JSON-LD data into a graph
             const graph = $rdf.graph();
             $rdf.parse(data, graph, absoluteTurtleUri, 'text/turtle');
@@ -60,27 +58,6 @@ function loadOntology(ontologyInfo) {
         })
         .catch(error => console.error('Error loading ontology:', error));
 }
-
-// Function to fetch and populate ontologies
-function loadOntologies() {
-    fetch('config.json')
-        .then(response => response.json())
-        .then(config => {
-            config.ontologies.forEach(ontology => {
-                let option = document.createElement('option');
-                option.value = JSON.stringify(ontology); // Pass the entire ontology info
-                option.text = ontology.name;
-                ontologySelect.add(option);
-            });
-        })
-        .catch(error => console.error('Error loading ontologies:', error));
-}
-
-// Event listener for ontology select
-ontologySelect.addEventListener('change', () => {
-    const selectedOntologyInfo = JSON.parse(ontologySelect.value);
-    loadOntology(selectedOntologyInfo);
-});
 
 // Helper functions
 function clearForm() {
@@ -170,13 +147,8 @@ function addVocabularyEntry(section, propertyLabel) {
 
 // Event Listener for ontologySelect
 ontologySelect.addEventListener('change', () => {
-    const selectedPath = ontologySelect.value;
-
-    if (selectedPath) {
-        loadOntology(selectedPath); 
-    } else {
-        console.error("No ontology selected.");
-    }
+    const selectedOntologyInfo = JSON.parse(ontologySelect.value);
+    loadOntology(selectedOntologyInfo);
 });
 
 // Event Listener for Generate Button 
