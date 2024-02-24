@@ -12,7 +12,7 @@ const SCHEMA = $rdf.Namespace('http://schema.org/');
 const RDFS = $rdf.Namespace('http://www.w3.org/2000/01/rdf-schema#');
 
 // Global to store the Fetcher
-let fetcher = new $rdf.Fetcher();
+let fetcher;
 
 // Function to fetch and populate ontologies
 function loadOntologies() {
@@ -83,13 +83,14 @@ function addTextInput(classURI, propertyURI, labelText) {
 
 // Event Listener for Generate Button 
 generateButton.addEventListener('click', () => {
-    const adpGraph = $rdf.graph(); // Using the $rdf.graph() method to create a new graph
+    const adpGraph = new $rdf.Graph(); // Using the $rdf namespace 
 
     // Agent Type and ID
-    adpGraph.add($rdf.sym(''), RDF('type'), FOAF('Agent')); 
+    adpGraph.add(adpGraph.sym(''), RDF('type'), FOAF('Agent')); 
     const agentURI = document.getElementById(FOAF('Agent')).value;
-    adpGraph.add($rdf.sym(agentURI), FOAF('Agent'), $rdf.lit(agentURI)); 
+    adpGraph.add(adpGraph.sym(agentURI), FOAF('Agent'), $rdf.lit(agentURI)); 
     // ... rest of your ADP generation logic
+
 
     // Extract values from form fields
     const formFields = document.querySelectorAll('.form-field');
@@ -97,21 +98,22 @@ generateButton.addEventListener('click', () => {
         const propertyURI = field.dataset.propertyUri;
         const inputValue = document.getElementById(propertyURI).value;
         if (inputValue) { 
-            adpGraph.add($rdf.sym(agentURI), $rdf.sym(propertyURI), $rdf.lit(inputValue)); 
+            adpGraph.add(adpGraph.sym(agentURI), $rdf.sym(propertyURI), $rdf.lit(inputValue)); 
         }
     });
 
     // Serialize ADP in Turtle format
     const adpSerializer = new $rdf.Serializer(adpGraph);
-    const adpOutput = adpSerializer.statementsToN3(adpGraph.statements); 
+    const adpOutput = adpSerializer.toN3(adpGraph); 
     outputCode.textContent = adpOutput; 
 
-    // Hash Calculation (assuming you have included 'js-sha256.js')
+    // Hash Calculation (assuming you have included 'sha256.js')
     const hash = sha256.sha256(adpOutput);
     outputHash.textContent = hash;
 });
 
 // Initialization 
+fetcher = new $rdf.Fetcher(); 
 loadOntologies();
 
 ontologySelect.addEventListener('change', () => {
