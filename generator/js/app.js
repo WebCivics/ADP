@@ -28,7 +28,6 @@ function loadOntologies() {
         })
         .catch(error => console.error('Error loading ontologies:', error));
 }
-
 // Function to fetch and parse an ontology (Modified for RDF/JSON-LD)
 function loadOntology(ontologyInfo) {
     const { name, turtleUri, jsonldUri, prefix } = ontologyInfo;
@@ -148,9 +147,12 @@ function addVocabularyEntry(section, propertyLabel) {
 // Event Listener for ontologySelect
 ontologySelect.addEventListener('change', () => {
     const selectedOntologyInfo = JSON.parse(ontologySelect.value);
-    loadOntology(selectedOntologyInfo);
+    if (selectedOntologyInfo.turtleUri) {
+        loadOntology(selectedOntologyInfo);
+    } else {
+        console.error(`Turtle URI is missing for ontology: ${selectedOntologyInfo.name}`);
+    }
 });
-
 // Event Listener for Generate Button 
 generateButton.addEventListener('click', () => {
     const adpGraph = $rdf.graph();
