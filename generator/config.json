@@ -2,13 +2,13 @@
     "ontologies": [
         {
             "name": "FOAF", 
-            "path": "/ontologies/foaf.ttl",
+            "path": "ontologies/foaf.ttl",
             "format": "turtle" 
         },
         {
             "name": "Schema.org",
-            "path": "/ontologies/schema.jsonld",
-            "format": "json-ld"
+            "path": "ontologies/schema.ttl",
+            "format": "turtle"
         }
     ]
 }
