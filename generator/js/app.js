@@ -4,11 +4,11 @@ const adpForm = document.getElementById('adp-form');
 const outputCode = document.getElementById('output-code');
 const outputHash = document.getElementById('output-hash');
 const generateButton = document.getElementById('generate-button');
+const iriInput = document.getElementById('iri-input');
 
 // Namespaces
 const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
 const RDF = $rdf.Namespace('http://www.w3.org/1999/02/22-rdf-syntax-ns#');
-const SCHEMA = $rdf.Namespace('http://schema.org/');
 const RDFS = $rdf.Namespace('http://www.w3.org/2000/01/rdf-schema#');
 
 // Global to store the Fetcher
@@ -29,42 +29,47 @@ function loadOntologies() {
         .catch(error => console.error('Error loading ontologies:', error));
 }
 
-// Function to fetch and parse an ontology (Modified for absolute IRIs)
+// Function to fetch and parse an ontology (Modified for RDF/JSON-LD)
 function loadOntology(path) {
-    const absolutePath = new URL(path, window.location.origin).href; // Construct absolute IRI
-    fetcher.load(absolutePath).then(graph => {
-        clearForm(); 
-        buildForm(graph); 
-    }).catch(error => console.error('Error loading ontology:', error));
+    const ontologyName = path.split('/').pop().split('.')[0];
+    const absolutePath = new URL(path, window.location.origin).href;
+
+    fetch(absolutePath)
+        .then(response => {
+            if (!response.ok) {
+                console.error(`Failed to load ontology (${response.status}): ${response.statusText || 'Unknown error'}`);
+                throw new Error('Failed to load ontology');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data loaded:', data);
+
+            // Parse the RDF/JSON-LD data into a graph
+            const graph = $rdf.graph();
+            $rdf.parse(data, graph, absolutePath, 'application/ld+json');
+
+            // Check if the graph is empty or undefined
+            if (!graph || graph.length === 0) {
+                console.error(`No data loaded for ontology: ${ontologyName}`);
+                throw new Error('No data loaded for ontology');
+            }
+
+            // Call the buildForm function with the graph and ontologyName
+            buildForm(graph, ontologyName);
+        })
+        .catch(error => console.error('Error loading ontology:', error));
 }
+
+
 
 // Helper functions
 function clearForm() {
     adpForm.innerHTML = ''; 
 }
 
-function buildForm(graph) {
-    addTextInput(null, RDF('type'), 'Agent Type'); // Mandatory property
-    addTextInput(null, FOAF('Agent'), 'Agent ID (URI)'); 
-
-    // Find relevant classes 
-    const relevantClasses = graph.match(null, RDF('type'), RDFS('Class'));
-    relevantClasses.forEach(classSubject => {
-        const classURI = classSubject.subject;
-        const label = graph.any(classURI, RDFS('label'))?.value || classURI.value; 
-
-        // Get properties of this class
-        const properties = graph.match(classURI, null, null); 
-        properties.forEach(propertySubject => {
-            const propertyURI = propertySubject.predicate;
-            const propertyLabel = graph.any(propertyURI, RDFS('label'))?.value || propertyURI.value;
-            addTextInput(classURI, propertyURI, propertyLabel); 
-        });
-    });
-}
-
 function addTextInput(classURI, propertyURI, labelText) {
-    const fieldContainer = document.createElement('div'); // Create a container for better styling
+    const fieldContainer = document.createElement('div');
     fieldContainer.className = 'form-field';
     fieldContainer.dataset.propertyUri = propertyURI.value; 
 
@@ -81,27 +86,110 @@ function addTextInput(classURI, propertyURI, labelText) {
     adpForm.appendChild(fieldContainer); 
 }
 
-// Event Listener for Generate Button 
-generateButton.addEventListener('click', () => {
-    const adpGraph = $rdf.graph(); // Using the $rdf.graph() method to create a new graph
+function buildForm(graph, ontologyName) {
+    clearForm();
 
-    // Agent Type and ID
-    adpGraph.add($rdf.sym(''), RDF('type'), FOAF('Agent')); 
-    const agentURI = document.getElementById(FOAF('Agent')).value;
-    adpGraph.add($rdf.sym(agentURI), FOAF('Agent'), $rdf.lit(agentURI)); 
-    // ... rest of your ADP generation logic
+    // Add common fields
+    addTextInput(null, RDF('type'), 'Agent Type'); // Mandatory property
+    addTextInput(null, FOAF('Agent'), 'Agent ID (URI)');
 
-    // Extract values from form fields
-    const formFields = document.querySelectorAll('.form-field');
-    formFields.forEach(field => {
-        const propertyURI = field.dataset.propertyUri;
-        const inputValue = document.getElementById(propertyURI).value;
-        if (inputValue) { 
-            adpGraph.add($rdf.sym(agentURI), $rdf.sym(propertyURI), $rdf.lit(inputValue)); 
+    // Create a section for the ontology
+    const ontologySection = document.createElement('div');
+    ontologySection.className = 'ontology-section';
+    ontologySection.innerHTML = `<h3>${ontologyName}</h3>`;
+    adpForm.appendChild(ontologySection);
+
+    // Find relevant classes
+    graph.forEach(quad => {
+        const classURI = quad.subject;
+        const label = graph.any(classURI, RDFS('label'))?.value || classURI.value;
+
+        // Check if the class belongs to the selected ontology
+        if (label.toLowerCase() === ontologyName.toLowerCase()) {
+            // Get properties of this class
+            const properties = graph.match(classURI, null, null);
+            properties.forEach(propertyQuad => {
+                const propertyURI = propertyQuad.predicate;
+                const propertyLabel = graph.any(propertyURI, RDFS('label'))?.value || propertyURI.value;
+
+                // Create a vocabulary entry with a drop-down box, input fields, and an "Add" button
+                addVocabularyEntry(ontologySection, propertyLabel);
+            });
         }
     });
+}
 
-    // Serialize ADP in Turtle format
+function addVocabularyEntry(section, propertyLabel) {
+    const vocabularyEntry = document.createElement('div');
+    vocabularyEntry.className = 'vocabulary-entry';
+
+    const vocabularyLabel = document.createElement('label');
+    vocabularyLabel.textContent = propertyLabel;
+
+    const inputField = document.createElement('input');
+    inputField.type = 'text';
+    inputField.placeholder = 'Provide input';
+
+    const typeField = document.createElement('input');
+    typeField.type = 'text';
+    typeField.placeholder = 'Input type (e.g., text, int)';
+
+    const addButton = document.createElement('button');
+    addButton.textContent = 'Add';
+    addButton.addEventListener('click', () => {
+        // Handle the "Add" button click (you can customize this logic)
+        console.log('Add button clicked');
+    });
+
+    vocabularyEntry.appendChild(vocabularyLabel);
+    vocabularyEntry.appendChild(inputField);
+    vocabularyEntry.appendChild(typeField);
+    vocabularyEntry.appendChild(addButton);
+
+    section.appendChild(vocabularyEntry);
+}
+
+// Event Listener for ontologySelect
+ontologySelect.addEventListener('change', () => {
+    const selectedPath = ontologySelect.value;
+
+    if (selectedPath) {
+        loadOntology(selectedPath); 
+    } else {
+        console.error("No ontology selected.");
+    }
+});
+
+// Event Listener for Generate Button 
+generateButton.addEventListener('click', () => {
+    const adpGraph = $rdf.graph();
+
+    // Agent Type and ID
+    const agentElement = document.getElementById(FOAF('Agent'));
+
+    if (agentElement) {
+        const agentURI = agentElement.value;
+        adpGraph.add($rdf.sym(agentURI), RDF('type'), FOAF('Agent'));
+    } else {
+        console.error("Element with ID 'Agent' not found.");
+        return;
+    }
+
+    // Get IRI value (With Default Handling)
+    let iriValue = iriInput.value;
+    if (!iriValue) { 
+        iriValue = "https://example.org/"; 
+    }
+
+    // Basic IRI Validation (Optional) 
+    if (!isValidIRI(iriValue)) {
+        console.error("Invalid IRI format provided.");
+        return; 
+    }
+
+    // ... (Extract values from form fields)
+
+    // Serialize ADP in Turtle format 
     const adpSerializer = new $rdf.Serializer(adpGraph);
     const adpOutput = adpSerializer.statementsToN3(adpGraph.statements); 
     outputCode.textContent = adpOutput; 
@@ -114,7 +202,8 @@ generateButton.addEventListener('click', () => {
 // Initialization 
 loadOntologies();
 
-ontologySelect.addEventListener('change', () => {
-    const selectedPath = ontologySelect.value;
-    loadOntology(selectedPath); 
-});
+// Basic IRI Validation Function (Optional)
+function isValidIRI(iri) {
+    const iriPattern = /^(https?|ftp):\/\/[^\s$.?#].[^\s]*$/; 
+    return iriPattern.test(iri); 
+}

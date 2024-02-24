@@ -6,24 +6,33 @@
     <link rel="stylesheet" type="text/css" href="styles.css"> 
     <script src="js/rdflib.min.js"></script>
     <script src="js/js-sha256.js"></script>
+ 
 </head>
 <body>
-    <div class="container">
-        <div class="form-area">
-            <h2>ADP Generator</h2>
-            <label for="ontology-select">Select Ontology:</label>
-            <select id="ontology-select"></select>
-            <div id="adp-form"></div>
-            <button id="generate-button">Generate ADP</button>
-        </div>
+        <div class="container">
+            <div class="form-area">
+                <h2>ADP Generator</h2>
+                <label for="ontology-select">Select Ontology:</label>
+                <select id="ontology-select"></select>
+                <input type="text" id="Agent" />
 
-        <div class="code-area">
-            <h2>Generated Code</h2>
-            <pre id="output-code"></pre>
-            <h2>ADP Hash</h2>
-            <pre id="output-hash"></pre>
+                <div class="form-field">
+                    <label for="iri-input">IRI:</label>
+                    <input type="text" id="iri-input" name="iri-input">
+                    <button id="set-iri-button">Set IRI</button> 
+                </div>
+    
+                <div id="adp-form"></div>
+                <button id="generate-button">Generate ADP</button>
+            </div>
+    
+            <div class="code-area">
+                <h2>Generated Code</h2>
+                <pre id="output-code"></pre>
+                <h2>ADP Hash</h2>
+                <pre id="output-hash"></pre>
+            </div>
         </div>
-    </div>
     <script src="js/app.js"></script>  
 </body>
 </html>
