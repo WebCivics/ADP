@@ -2,15 +2,14 @@
     "ontologies": [
       {
         "name": "FOAF",
-        "turtleUri": "http://webcivics.github.io/ontologies/ttl/xmlns/foaf.ttl",
-        "jsonldUri": "http://webcivics.github.io/ontologies/jsonld/xmlns/foaf.jsonld",
+        "turtleUri": "https://raw.githubusercontent.com/WebCivics/ontologies/2023/ttl/xmlns/foaf.ttl",
+        "jsonldUri": "https://raw.githubusercontent.com/WebCivics/ontologies/2023/jsonld/xmlns/foaf.jsonld",
         "prefix": "foaf"
       },
       {
         "name": "Schema.org",
-        "turtleUri": "http://webcivics.github.io/ttl/schemaorg/schema.ttl",
-        "jsonldUri": "http://webcivics.github.io/ontologies/jsonld/schemaorg/schema.jsonld",
+        "turtleUri": "https://raw.githubusercontent.com/WebCivics/ontologies/2023/ttl/schemaorg/schema.ttl",
+        "jsonldUri": "https://raw.githubusercontent.com/WebCivics/ontologies/2023/jsonld/schemaorg/schema.jsonld",
         "prefix": "schema"
       }   ]
   }
-  
