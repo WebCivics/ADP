@@ -1,0 +1,14 @@
+{
+    "ontologies": [
+        {
+            "name": "FOAF", 
+            "path": "/ontologies/foaf.ttl",
+            "format": "turtle" 
+        },
+        {
+            "name": "Schema.org",
+            "path": "/ontologies/schema.jsonld",
+            "format": "json-ld"
+        }
+    ]
+}
