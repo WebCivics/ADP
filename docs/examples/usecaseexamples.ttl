@@ -39,13 +39,18 @@ ADP file (turtle)
     ] .
 
 <#pod>
-
     a adp:Agent, adp:DataStorageService ;
-    adp:dnsDomain "example.com" ;
+    dct:description "My Personal PDS" ;
+    adp:dnsDomain "storage.ap.inrupt.com" ;  
     pds:storageType pds:PersonalDataPod ;
-    dct:description "My personal online data storage" ;
-    adp:dataLocation <https://example.com/data/pod> ;
-    pds:accessControlPolicy <https://mypod.com/policy.ttl> .
+    adp:dataLocation <https://storage.ap.inrupt.com/b436b6a9-9c4c-45bc-9d22-d1b068e84992/> ;
+    pds:WebID <https://id.inrupt.com/ubiquitous> ;
+    pds:accessControlPolicy <https://mypod.com/policy.ttl> ;
+
+
+    pds:pdsType pds:solid ;
+    pds:pdsVersion pds:6.23 ;
+
 ```
 
 ## An AI Agent

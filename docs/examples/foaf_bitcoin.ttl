@@ -1,0 +1,58 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<https://example.org/me>
+    a foaf:Person;
+    foaf:name "John Doe";
+    foaf:homepage <https://example.org/johndoe>;
+    foaf:holdsAccount [
+        a foaf:OnlineAccount;
+        foaf:accountServiceHomepage <https://example.org/bitcoin>;
+        foaf:accountName "john_doe";
+        foaf:accountServiceHomepage <https://example.org/bitcoin>;
+        foaf:holdsAccount [
+            a foaf:Account;
+            foaf:accountServiceHomepage <https://example.org/bitcoin>;
+            foaf:accountName "john_doe_bitcoin";
+            foaf:accountServiceHomepage <https://example.org/bitcoin>;
+            foaf:accountServiceHomepage <http://www.w3.org/ns/solid/terms#isPartOf>;
+            foaf:accountServiceHomepage <https://example.org/bitcoin>;
+            foaf:accountServiceHomepage <http://www.w3.org/ns/solid/terms#isPartOf>;
+            foaf:accountServiceHomepage <https://example.org/bitcoin>;
+            foaf:accountServiceHomepage <http://www.w3.org/ns/solid/terms#isPartOf>;
+            foaf:holdsAccount [
+                a foaf:OnlineAccount;
+                foaf:accountServiceHomepage <https://example.org/bitcoin>;
+                foaf:accountName "john_doe_bitcoin";
+                foaf:accountServiceHomepage <https://example.org/bitcoin>;
+                foaf:holdsAccount [
+                    a foaf:Account;
+                    foaf:accountServiceHomepage <https://example.org/bitcoin>;
+                    foaf:accountName "john_doe_bitcoin";
+                    foaf:accountServiceHomepage <https://example.org/bitcoin>;
+                    foaf:accountServiceHomepage <http://www.w3.org/ns/solid/terms#isPartOf>;
+                    foaf:accountServiceHomepage <https://example.org/bitcoin>;
+                    foaf:accountServiceHomepage <http://www.w3.org/ns/solid/terms#isPartOf>;
+                    foaf:accountServiceHomepage <https://example.org/bitcoin>;
+                    foaf:accountServiceHomepage <http://www.w3.org/ns/solid/terms#isPartOf>;
+                    foaf:holdsAccount [
+                        a foaf:Account;
+                        foaf:accountServiceHomepage <https://example.org/bitcoin>;
+                        foaf:accountName "john_doe_bitcoin";
+                        foaf:accountServiceHomepage <https://example.org/bitcoin>;
+                        foaf:accountServiceHomepage <http://www.w3.org/ns/solid/terms#isPartOf>;
+                        foaf:accountServiceHomepage <https://example.org/bitcoin>;
+                        foaf:accountServiceHomepage <http://www.w3.org/ns/solid/terms#isPartOf>;
+                        foaf:accountServiceHomepage <https://example.org/bitcoin>;
+                        foaf:accountServiceHomepage <http://www.w3.org/ns/solid/terms#isPartOf>;
+                        foaf:holdsAccount [
+                            a foaf:OnlineAccount;
+                            foaf:accountServiceHomepage <https://example.org/bitcoin>;
+                            foaf:accountName "john_doe_bitcoin";
+                            foaf:accountServiceHomepage <https://example.org/bitcoin>
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ].
