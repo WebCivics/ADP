@@ -1,0 +1,183 @@
+### Examples
+
+Provide clear examples in both Turtle and JSON-LD demonstrating basic and more complex ADP files.
+
+```
+
+DNS TXT record _adp.example.com  TXT  "adp:signer <https://example.com/profile#me> ."
+
+```
+
+ADP file (turtle)
+
+```
+
+@prefix adp: <http://www.example.org/adp#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix adp: <http://www.example.org/adp#> .
+@prefix ai: <http://www.example.org/ai-ontology#> .
+@prefix un: <http://www.un.org/ontology#> .
+@prefix vc: <https://www.w3.org/2018/credentials#> .
+@prefix adp: <http://www.example.org/adp#> .
+@prefix hrt: <http://www.example.org/humanitarian#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix pds: <http://www.example.com/pds-ontology#> .
+
+
+<#this>
+
+    a adp:Agent ;
+
+    foaf:name "Example Organization" ;
+
+    adp:verification [
+
+        adp:dnsRecord "_adp.example.com" ;
+
+        adp:verificationType "Signature"
+
+    ] .
+
+<#pod>
+
+    a adp:Agent, adp:DataStorageService ;
+    adp:dnsDomain "example.com" ;
+    pds:storageType pds:PersonalDataPod ;
+    dct:description "My personal online data storage" ;
+    adp:dataLocation <https://example.com/data/pod> ;
+    pds:accessControlPolicy <https://mypod.com/policy.ttl> .
+```
+
+## An AI Agent
+```
+
+
+<#this>
+
+    a adp:Agent, ai:ImageClassifier ;
+    foaf:name "Acme Image Recognition Service" ;
+    adp:description "A service for classifying images based on their content" ;
+    ai:capability ai:ImageClassification ;
+    ai:inputFormat "image/jpeg", "image/png" ;
+    ai:outputFormat <https://schema.org/ImageObject> .
+
+```
+
+
+## Personal Data Storage
+
+```
+
+
+
+
+```
+  
+
+## AI Service
+
+```
+
+<#this>
+    a adp:Agent, ai:TextSummarizer ;
+    adp:dnsDomain "ai-service.com" ;
+    ai:capability ai:Summarization ;
+    ai:inputFormat <https://schema.org/Text> ;
+    adp:serviceEndpoint <https://ai-service.com/api>.
+```
+
+
+##  Essential Service (Humanitarian)
+
+```
+
+
+<#this>
+    a adp:Agent, hrt:EssentialService ;
+    adp:dnsDomain "humanitarian-aid.org" ;
+    hrt:serviceType hrt:EmergencyResponse .
+
+```
+
+```
+
+
+
+<#this>
+    a adp:Agent, un:EssentialService ;
+    adp:verifiableCredentials [
+    a vc:VerifiableCredential ;
+      vc:type "UNHumanitarianDesignation" ;
+      vc:issuer <https://un.org/aid-registry>
+    ] .
+
+```
+
+## Age-Appropriate Content
+
+```
+@prefix adp: <http://www.example.org/adp#> .
+@prefix ac: <http://www.example.org/age-classification#> .
+
+<#this>
+    a adp:Agent, adp:ContentProvider ;
+    adp:dnsDomain "media-site.com" ;
+    ac:ageRating ac:PG-13 . 
+```
+
+```
+
+@prefix adp: <http://www.example.org/adp#> .
+@prefix ac: <http://www.gov.au/age-classification#> .
+  
+<#this>
+    a adp:Agent, adp:ContentProvider ;
+    ac:contentRating ac:MA15+ .
+```
+
+<#this>
+    a adp:Agent, adp:NewsProvider ;
+    adp:dnsDomain "news.org" ;
+    adp:apiDescription <https://news.org/developer-api.html> .
+```
+
+## Library SPARQL Endpoint
+
+```
+
+@prefix adp: <http://www.example.org/adp#> .
+
+<#this>
+    a adp:Agent ;
+    adp:dnsDomain "library.edu" ;
+    adp:sparqlEndpoint <https://library.edu/sparql> .
+```
+
+## Verifiable Credentials in ADP
+
+```
+@prefix adp: <http://www.example.org/adp#> .
+@prefix vc: <https://www.w3.org/2018/credentials#> .
+
+<#this>
+   a adp:Agent ;
+   adp:verifiableCredentials [
+       a vc:VerifiableCredential ;
+       vc:type "DriversLicense" ;
+       vc:issuer <https://dmv.gov.org/#issuer> ;
+       # ... other VC properties
+    ] .
+
+
+<#this>
+    a adp:Agent, adp:FinancialInstitution ;
+    adp:dnsDomain "mybank.com" ;
+    adp:verifiableCredentials [
+      a vc:VerifiableCredential ;
+        vc:type "BankingLicense" ;
+        vc:issuer <https://finance.gov/licensing>
+    ] .
+
+```
+
+**

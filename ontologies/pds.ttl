@@ -1,0 +1,81 @@
+@prefix : <http://www.example.org/storageOntology#> 
+@prefix owl: <http://www.w3.org/2002/07/owl#> 
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+
+# Classes
+:StorageService a owl:Class.
+:StorageProvider a owl:Class.
+:ServiceVersion a owl:Class.
+:Functionality a owl:Class.
+:TermsOfService a owl:Class.
+:AuthorizationGateway a owl:Class.
+:AccessPolicy a owl:Class.
+:ConsentRecord a owl:Class.
+
+# Object Properties (Relationships)
+:hasProvider a owl:ObjectProperty ;
+    rdfs:domain :StorageService ;
+    rdfs:range :StorageProvider .
+
+:hasVersion a owl:ObjectProperty ;
+    rdfs:domain :StorageService ;
+    rdfs:range :ServiceVersion .
+
+:hasFunctionality a owl:ObjectProperty ;
+    rdfs:domain :StorageService ;
+    rdfs:range :Functionality .
+
+:hasTermsOfService a owl:ObjectProperty ;
+    rdfs:domain :StorageService ;
+    rdfs:range :TermsOfService .
+
+# Data Properties
+:serviceName a owl:DatatypeProperty ;
+    rdfs:domain :StorageService ;
+    rdfs:range xsd:string .
+
+:versionNumber a owl:DatatypeProperty ;
+    rdfs:domain :ServiceVersion ;
+    rdfs:range xsd:string . 
+
+:managesPolicy a owl:ObjectProperty ;
+    rdfs:domain :AuthorizationGateway ;
+    rdfs:range :AccessPolicy .
+
+:hasConsentRecord a owl:ObjectProperty ;
+    rdfs:domain :AuthorizationGateway ;
+    rdfs:range :ConsentRecord .
+
+:policyAppliesTo a owl:ObjectProperty ;
+     rdfs:domain :AccessPolicy ;
+     rdfs:range :DataResource .  # Placeholder - you'd need to define how you model DataResource
+
+# Example Instances
+:myDataService a :StorageService ;
+    :serviceName "MyData Storage" ;
+    :hasProvider :myDataOrg ;
+    :hasVersion :v1_0 ;
+    :hasFunctionality :fileStorage, :dataSharing ;
+    :hasTermsOfService <https://mydata.org/terms> . 
+
+:myDataOrg a :StorageProvider ;
+    :providerName "MyData Organization" .
+
+:v1_0 a :ServiceVersion ;
+    :versionNumber "1.0" .
+
+:fileStorage a :Functionality .
+:dataSharing a :Functionality . 
+
+# Example Instances
+:myDataGateway a :AuthorizationGateway ;
+    :managesPolicy :photoSharingPolicy ;
+    :hasConsentRecord :consentRecord123 .
+
+:photoSharingPolicy a :AccessPolicy ;
+    :policyAppliesTo :myPhotoAlbum .
+
+:consentRecord123 a :ConsentRecord ;
+    :consentStatus "granted" .
