@@ -17,12 +17,20 @@ THIS WORK IS BEING DONE FOR THE BETTERMENT OF HUMANITY.
 
 ## ADP Introduction
 The notion of an Agent Discovery Protocol, seeks to provide a means to define various properties of a domain name and related services, using Semantic Web components such as RDF.  Generally, as is defined in `rdf:foaf` there are different classes of agents, such as legal personalities, software and/or natural persons.  ADP seeks to provide solutions to problems that relate to all groups, but, there are specific considerations relating to `natural persons` that are now therefore firstly discussed.
+
 #### Personal Domains - names
 Two ideas for names have developed, although more consideration (and more names) sought.
 1. Personal Intelligent Domains (PID): PID is a term used for many existing purposes, which is not considered ideal. nonetheless, the notion of an 'intelligent domain', is thought interesting.
 2. Personal Domain Profile (PDP): The notion of a 'PDP' is interesting as a way to classify categories of domain use, as is otherwise considered more broadly in ADP considerations.
 
 Both terms consider various notions related to a future 'human centric internet' and/or 'intelligent internet' and in-turn also, 'human centric ai'.  Whilst not merely defined by the domain name (or DNS); consideration about stepping stones, that better support the means for lay-persons to grok the notions, is considered helpfully beneficial.  Indeed, a 'personal intelligent domain profile' (PIDP) could be another enumerated term...  
+
+![image 1](../images/2024-03-02_diagram_1.png)
+
+
+![image 2](../images/2024-03-02_diagram-2.png)
+
+
 
 #### General Function
 
