@@ -89,6 +89,15 @@ echo "Turtle Checksum (SHA-256): " . $ttlChecksum . "\n";
    
    It is also thought not really the same as `webid` or `foaf`, whilst providing a 'bridge' to the location where that record is otherwise stored (ie: in their pod, accessible subject to permissions); however, for public entities (legal personalities, software, products, etc.) this type of information MAY be provided in the record.
 
+   A simple example would be the ability to provide cryptocurrency addresses; for example,
+
+```turtle
+@prefix schema: <https://schema.org/> .
+@prefix adp: <http://adp.tld/vocab#> .
+
+<https://example.com/user123> adp:haseCashAddress "ecash:qrhrfvpm9x3tsq0uj09pzrfcc495h55clswp7tjp9c" .
+```
+
 5. NOT (presently) Authentication
    The purpose of ADP is presently focused on discovery rather than `AUTH`.  
    
@@ -230,7 +239,7 @@ ADP could be used to define a software agent, merely by the domain or URI.
 
 ### Addressbook support
 
-```
+```turtle
 @prefix schema: <https://schema.org/> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix org: <http://www.w3.org/ns/org#> .
@@ -302,6 +311,7 @@ adp:adultEndpoint a schema:EntryPoint ;
 ```
 
 NOTE: Some of these use-cases require 'social web' functionality supports via methods and systems that are not intended to be solely provided via ADP, but is thought to require it.
+
 #### ADP Document generally.
 The ADP Document (ie: `domain.tld/.wellknown/adp.n3` or `domain.tld/adp.n3`) is intended to provide, in RDF, what is in-effect a public graph.  The use for individuals is considered to be different to the use-cases for other agents.  
 
@@ -314,3 +324,6 @@ b. bond the document to the domain cryptographically
 c. are there any other MAJOR considerations I may have missed?
 
 It is assumed that the document URI will be provided in the TLS certificate as a SAN.
+
+## Other notes
+Examples provided in this document are illustrative only, the specifics have not been considered properly, yet.  
