@@ -6,6 +6,9 @@ The names  'agent discovery protocol' and 'personal domain profile' are consider
 
 The purpose of writing this document, is to seek out considerations that could be made by experts to assist with the design of a solution to address the underlying purposes of the work.  There are various specialist skills and expertise, held by some, sought to be encouraged to provide input.
 
+![image 1](../images/2024-03-02_diagram_1.png)
+
+
 OUTCOMES:
 
 There are two intended outcomes,
@@ -25,7 +28,6 @@ Two ideas for names have developed, although more consideration (and more names)
 
 Both terms consider various notions related to a future 'human centric internet' and/or 'intelligent internet' and in-turn also, 'human centric ai'.  Whilst not merely defined by the domain name (or DNS); consideration about stepping stones, that better support the means for lay-persons to grok the notions, is considered helpfully beneficial.  Indeed, a 'personal intelligent domain profile' (PIDP) could be another enumerated term...  
 
-![image 1](../images/2024-03-02_diagram_1.png)
 
 
 ![image 2](../images/2024-03-02_diagram-2.png)
