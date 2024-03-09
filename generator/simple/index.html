@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Discovery Protocol Generator</title>
+<!--Stylesheet-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--javascript-->
+<script src="js/js-sha256.js"></script> 
+<script src="js/script.js"></script> 
+</head>
+<body>
+    <h1>Agent Discovery Protocol Generator</h1>
+
+    <form id="dataForm">
+        <h2>ADP Information: Natural Person</h2>
+        <p>Provide a public name you'd like people to identify you by, this could be a psudonym or a full-name.</p>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+
+    <p> provide the domain name this file will be deployed on.</p>
+        <label for="domain">Domain Name:</label>
+        <input type="text" id="domain" name="domain" required>
+        <br>
+      <h2>Personal Ontology Provider</h2>  <!-- Add this input field to the form -->
+      <p>ADP is not intended to support personal or private data, but it is intended to support the discovery of personal data.  This is the URL of the personal ontology provider that will provide the data about the agent.</p>
+      <p>The example below is based upon the use of a <a href="https://solidproject.org/">Solid Pod</a>. If you do not already have one, some information about how to get one is provided <a href="https://solidproject.org/users/get-a-pod">HERE</a>.</p>
+      <label for="webID">WebID:</label>
+      <input type="url" id="SolidwebID" name="SolidwebID" placeholder="https://your-webid-url" required>
+      <br>
+      
+      <label for="podStorage">Pod Storage:</label>
+      <input type="url" id="SoldPodStorage" name="SoldPodStorage" placeholder="https://your-pod-storage-url" required>
+      <br>
+
+        <h2>Online Accounts</h2>
+
+        <p>Provide your account aliases.  In this example, we only need the part of the address that refers to your account, for example, if you were elon musk then https://twitter.com/elonmusk/ would be your twitter account URI and the only bit we need is 'elonmusk'</p>
+        <label for="linkedin">https://www.linkedin.com/in/</label>
+        <input type="text" id="linkedinAccount" name="linkedinAccount" required>
+        <br>
+
+        <label for="twitter">https://twitter.com/</label>
+        <input type="text" id="twitterAccount" name="twitterAccount" required>
+        <br>
+
+        <label for="github">https://github.com/</label>
+        <input type="text" id="githubAccount" name="githubAccount" required>
+        <br>
+
+        <h2>eCash Account</h2>
+        <label for="ecash">Ecash:</label>
+        <input type="text" id="ecash" name="cryptoAccounts" required>
+        <br>
+
+        <button type="button" onclick="generateJSONLD()">Generate jsonld ADP files</button>
+    </form>  
+    
+    </body>
+    </html>

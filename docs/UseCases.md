@@ -17,4 +17,20 @@ Key Use Cases (expand upon the provided examples)
 
 In Summary, the inclusion of Verifiable Credentials within the Agent Discovery Protocol unlocks a powerful layer of trust, transparency, and control for agents operating within the Web 3.0, Solid, and MyData ecosystems.
 
+### Defining services that exist within a domain structure.
+
+if TLS is used, then TLS Certificates can be issued to different subdomains.  This is not the case for sub-directories.
+
+For example;
+
+/root
+    /myapp
+    /myotherapp
+    /mychatbot
+
+therefore, 
+
+The ADP method could define information about multiple agents, by providing a check-sum reference for the files contained within the sub-directories
+
+
 **

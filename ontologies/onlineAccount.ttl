@@ -1,0 +1,85 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Define the namespaces
+:OnlineAccount rdf:type owl:Class .
+
+# Subclasses
+:SocialMediaAccount rdf:type owl:Class ;
+    rdfs:subClassOf :OnlineAccount .
+
+:CloudStorageAccount rdf:type owl:Class ;
+    rdfs:subClassOf :OnlineAccount .
+
+:PersonalDataStore rdf:type owl:Class ;
+    rdfs:subClassOf :OnlineAccount .
+
+:EmailAccount rdf:type owl:Class ;
+    rdfs:subClassOf :OnlineAccount .
+
+:FinancialAccount rdf:type owl:Class ;
+    rdfs:subClassOf :OnlineAccount .
+
+# Object Properties
+:hasProvider rdf:type owl:ObjectProperty ;
+    rdfs:domain :OnlineAccount ;
+    rdfs:range xsd:string .
+
+:hasUsername rdf:type owl:ObjectProperty ;
+    rdfs:domain :OnlineAccount ;
+    rdfs:range xsd:string .
+
+:hasAuthenticationMethod rdf:type owl:ObjectProperty ;
+    rdfs:domain :OnlineAccount ;
+    rdfs:range xsd:string .
+
+:storesData rdf:type owl:ObjectProperty ;
+    rdfs:domain :OnlineAccount ;
+    rdfs:range xsd:string .
+
+:hasPermissions rdf:type owl:ObjectProperty ;
+    rdfs:domain :OnlineAccount ;
+    rdfs:range xsd:string .
+
+# Data Properties
+:creationDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain :OnlineAccount ;
+    rdfs:range xsd:date .
+
+:lastAccessDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain :OnlineAccount ;
+    rdfs:range xsd:date .
+
+:termsOfServiceURL rdf:type owl:DatatypeProperty ;
+    rdfs:domain :OnlineAccount ;
+    rdfs:range xsd:anyURI .
+
+:privacyPolicyURL rdf:type owl:DatatypeProperty ;
+    rdfs:domain :OnlineAccount ;
+    rdfs:range xsd:anyURI .
+
+# Relationships and Axioms
+
+# Subclass relationships
+:OnlineAccount rdf:type owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:unionOf (
+            :SocialMediaAccount
+            :CloudStorageAccount
+            :PersonalDataStore
+            :EmailAccount
+            :FinancialAccount
+        )
+    ] .
+
+# Disjointness
+owl:AllDisjointClasses (
+    :SocialMediaAccount
+    :CloudStorageAccount
+    :PersonalDataStore
+    :EmailAccount
+    :FinancialAccount
+) .

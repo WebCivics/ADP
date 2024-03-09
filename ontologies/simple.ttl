@@ -1,0 +1,45 @@
+@prefix adp: <webcivics.github.io/ontologies/adp#> .
+
+adp:Agent a rdfs:Class ;
+    rdfs:label "Agent" .
+
+adp:hasName a rdf:Property ;
+    rdfs:label "hasName" ;
+    rdfs:domain adp:Agent ;
+    rdfs:range xsd:string .
+
+adp:hasOnlineAccount a rdf:Property ;
+    rdfs:label "hasOnlineAccount" ;
+    rdfs:domain adp:Agent ;
+    rdfs:range adp:OnlineAccount .
+
+adp:hasCryptoAccount a rdf:Property ;
+    rdfs:label "hasCryptoAccount" ;
+    rdfs:domain adp:Agent ;
+    rdfs:range adp:CryptoAccount .
+
+adp:OnlineAccount a rdfs:Class ;
+    rdfs:label "OnlineAccount" .
+
+adp:CryptoAccount a rdfs:Class ;
+    rdfs:label "CryptoAccount" .
+
+adp:hasTwitterAccount a rdf:Property ;
+    rdfs:label "hasTwitterAccount" ;
+    rdfs:domain adp:OnlineAccount ;
+    rdfs:range xsd:string .
+
+adp:hasLinkedinAccount a rdf:Property ;
+    rdfs:label "hasLinkedinAccount" ;
+    rdfs:domain adp:OnlineAccount ;
+    rdfs:range xsd:string .
+
+adp:hasGithubAccount a rdf:Property ;
+    rdfs:label "hasGithubAccount" ;
+    rdfs:domain adp:OnlineAccount ;
+    rdfs:range xsd:string .
+
+adp:hasEcashAccount a rdf:Property ;
+    rdfs:label "hasEcashAccount" ;
+    rdfs:domain adp:CryptoAccount ;
+    rdfs:range xsd:string .

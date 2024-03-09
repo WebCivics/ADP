@@ -1,0 +1,64 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix oa: <http://example.org/agent-discovery-protocol#> .
+@prefix oao: <http://example.org/online-account-ontology#> .
+@prefix aao: <http://example.org/ai-agent-ontology#> .
+
+# Define the namespaces
+oa:ADPProfile rdf:type owl:Class .
+
+# Subclasses
+oa:PersonProfile rdf:type owl:Class ;
+    rdfs:subClassOf oa:ADPProfile .
+
+oa:OrganizationProfile rdf:type owl:Class ;
+    rdfs:subClassOf oa:ADPProfile .
+
+# Object Properties
+oa:hasOnlineAccount rdf:type owl:ObjectProperty ;
+    rdfs:domain oa:ADPProfile ;
+    rdfs:range oao:OnlineAccount .
+
+oa:hasGuardian rdf:type owl:ObjectProperty ;
+    rdfs:domain oa:PersonProfile ;
+    rdfs:range oa:ADPProfile .
+
+oa:hasCredential rdf:type owl:ObjectProperty ;
+    rdfs:domain oa:ADPProfile ;
+    rdfs:range xsd:string .
+
+# Include the ability to refer to other ADP files in sub-directories
+oa:hasADPFileReference rdf:type owl:ObjectProperty ;
+    rdfs:domain :ADPProfile ;
+    rdfs:range xsd:anyURI .
+
+:hasADPPath rdf:type owl:ObjectProperty ;
+    rdfs:domain :ADPProfile ;
+    rdfs:range xsd:string .
+
+oa:usesAI rdf:type owl:ObjectProperty ;
+    rdfs:domain oa:ADPProfile ;
+    rdfs:range aao:AIAgent .
+
+oa:isAssociatedWith rdf:type owl:ObjectProperty ;
+    rdfs:domain oa:ADPProfile ;
+    rdfs:range owl:Thing .
+
+# Data Properties
+oa:domainName rdf:type owl:DatatypeProperty ;
+    rdfs:domain oa:ADPProfile ;
+    rdfs:range xsd:string .
+
+oa:description rdf:type owl:DatatypeProperty ;
+    rdfs:domain oa:ADPProfile ;
+    rdfs:range xsd:string .
+
+oa:contactInformation rdf:type owl:DatatypeProperty ;
+    rdfs:domain oa:ADPProfile ;
+    rdfs:range xsd:string .
+
+:checksumValue rdf:type owl:DatatypeProperty ;
+    rdfs:domain :ADPProfile ;
+    rdfs:range xsd:string .

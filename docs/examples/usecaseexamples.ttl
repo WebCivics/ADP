@@ -27,13 +27,9 @@ ADP file (turtle)
 <#this>
 
     a adp:Agent ;
-
     foaf:name "Example Organization" ;
-
     adp:verification [
-
         adp:dnsRecord "_adp.example.com" ;
-
         adp:verificationType "Signature"
 
     ] .
@@ -46,8 +42,6 @@ ADP file (turtle)
     adp:dataLocation <https://storage.ap.inrupt.com/b436b6a9-9c4c-45bc-9d22-d1b068e84992/> ;
     pds:WebID <https://id.inrupt.com/ubiquitous> ;
     pds:accessControlPolicy <https://mypod.com/policy.ttl> ;
-
-
     pds:pdsType pds:solid ;
     pds:pdsVersion pds:6.23 ;
 
@@ -68,17 +62,6 @@ ADP file (turtle)
 
 ```
 
-
-## Personal Data Storage
-
-```
-
-
-
-
-```
-  
-
 ## AI Service
 
 ```
@@ -96,7 +79,6 @@ ADP file (turtle)
 
 ```
 
-
 <#this>
     a adp:Agent, hrt:EssentialService ;
     adp:dnsDomain "humanitarian-aid.org" ;
@@ -105,8 +87,6 @@ ADP file (turtle)
 ```
 
 ```
-
-
 
 <#this>
     a adp:Agent, un:EssentialService ;

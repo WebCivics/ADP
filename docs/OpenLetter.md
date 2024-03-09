@@ -1,4 +1,4 @@
-# Open Letter re: Objectives
+# Open Letter re: Objectives -- OLD (not needed)
 
 This document attempts to provide an outline of the intended goals and considerations related to the notion of an 'agent discovery protocol' and a 'personal domain profile' framework therein.
 

@@ -1,4 +1,4 @@
-That's a fantastic project! Let's break down the development of your ADP static site app and outline the key components and considerations.
+Let's break down the development of your ADP static site app and outline the key components and considerations.
 
 **Project Structure**
 

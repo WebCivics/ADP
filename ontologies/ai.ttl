@@ -1,0 +1,89 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Define the namespaces
+:AIAgent rdf:type owl:Class .
+
+# Subclasses
+:ConversationalAgent rdf:type owl:Class ;
+    rdfs:subClassOf :AIAgent .
+
+:TaskAgent rdf:type owl:Class ;
+    rdfs:subClassOf :AIAgent .
+
+:EmbodiedAgent rdf:type owl:Class ;
+    rdfs:subClassOf :AIAgent .
+
+:HybridAgent rdf:type owl:Class ;
+    rdfs:subClassOf :AIAgent .
+
+# Object Properties
+:hasPurpose rdf:type owl:ObjectProperty ;
+    rdfs:domain :AIAgent ;
+    rdfs:range xsd:string .
+
+:hasCapabilities rdf:type owl:ObjectProperty ;
+    rdfs:domain :AIAgent ;
+    rdfs:range xsd:string .
+
+:usesAlgorithm rdf:type owl:ObjectProperty ;
+    rdfs:domain :AIAgent ;
+    rdfs:range xsd:string .
+
+:trainedOnData rdf:type owl:ObjectProperty ;
+    rdfs:domain :AIAgent ;
+    rdfs:range xsd:string .
+
+:hasInput rdf:type owl:ObjectProperty ;
+    rdfs:domain :AIAgent ;
+    rdfs:range xsd:string .
+
+:hasOutput rdf:type owl:ObjectProperty ;
+    rdfs:domain :AIAgent ;
+    rdfs:range xsd:string .
+
+# Data Properties
+:developer rdf:type owl:DatatypeProperty ;
+    rdfs:domain :AIAgent ;
+    rdfs:range xsd:string .
+
+:version rdf:type owl:DatatypeProperty ;
+    rdfs:domain :AIAgent ;
+    rdfs:range xsd:string .
+
+:creationDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain :AIAgent ;
+    rdfs:range xsd:date .
+
+:deploymentEnvironment rdf:type owl:DatatypeProperty ;
+    rdfs:domain :AIAgent ;
+    rdfs:range xsd:string .
+
+# Relationships and Axioms
+
+# Subclass relationships
+:AIAgent rdf:type owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:unionOf (
+            :ConversationalAgent
+            :TaskAgent
+            :EmbodiedAgent
+            :HybridAgent
+        )
+    ] .
+
+# Domain and range restrictions
+:ConversationalAgent owl:propertyDomain :hasPurpose, :hasCapabilities, :hasInput, :hasOutput, :trainedOnData, :developer, :version, :creationDate, :deploymentEnvironment ;
+    owl:propertyRange xsd:string .
+
+:TaskAgent owl:propertyDomain :hasPurpose, :hasCapabilities, :usesAlgorithm, :trainedOnData, :hasInput, :hasOutput, :developer, :version, :creationDate, :deploymentEnvironment ;
+    owl:propertyRange xsd:string .
+
+:EmbodiedAgent owl:propertyDomain :hasPurpose, :hasCapabilities, :trainedOnData, :hasInput, :hasOutput, :developer, :version, :creationDate, :deploymentEnvironment ;
+    owl:propertyRange xsd:string .
+
+:HybridAgent owl:propertyDomain :hasPurpose, :hasCapabilities, :usesAlgorithm, :trainedOnData, :hasInput, :hasOutput, :developer, :version, :creationDate, :deploymentEnvironment ;
+    owl:propertyRange xsd:string .
