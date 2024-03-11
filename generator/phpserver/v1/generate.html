@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Discovery Protocol Generator</title>
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--javascript-->
+    <script src="js/js-sha256.js"></script>
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <h1>Agent Discovery Protocol Generator</h1>
+
+    <form id="dataForm" action="generate.php" method="post">
+        <!-- Your existing form fields -->
+
+        <label for="SolidwebID">WebID:</label>
+        <input type="url" id="SolidwebID" name="webID" placeholder="https://your-webid-url" required>
+        <br>
+
+        <label for="SoldPodStorage">Pod Storage:</label>
+        <input type="url" id="SoldPodStorage" name="podStorage" placeholder="https://your-pod-storage-url" required>
+        <br>
+
+        <!-- Adjusted input field names -->
+        <label for="linkedinAccount">https://www.linkedin.com/in/</label>
+        <input type="text" id="linkedinAccount" name="onlineAccounts" required>
+        <br>
+
+        <label for="twitterAccount">https://twitter.com/</label>
+        <input type="text" id="twitterAccount" name="onlineAccounts" required>
+        <br>
+
+        <label for="githubAccount">https://github.com/</label>
+        <input type="text" id="githubAccount" name="onlineAccounts" required>
+        <br>
+
+        <label for="ecash">Ecash:</label>
+        <input type="text" id="ecash" name="cryptoAccounts" required>
+        <br>
+
+        <button type="button" onclick="generateJSONLD()">Generate jsonld ADP files</button>
+    </form>  
+    
+</body>
+</html>

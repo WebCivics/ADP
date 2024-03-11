@@ -1,0 +1,85 @@
+@prefix schema: <http://schema.org/> .
+@prefix ns0: <https://webcivics.github.io/ontologies/dev/adp#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://webcivics.github.io/ontologies/dev/adp#AgentDiscoveryProtocol>
+  a schema:WebPage ;
+  schema:domainPurpose <https://webcivics.github.io/ontologies/dev/adp#DomainPurpose> ;
+  ns0:Credentials ns0:Credentials ;
+  ns0:PersonalInformation ns0:PersonalInformation ;
+  ns0:checksum ns0:checksum ;
+  ns0:contentClassification ns0:ContentClassification ;
+  ns0:mydataService ns0:MyDataService ;
+  ns0:siteType ns0:SiteType ;
+  ns0:solidPodService ns0:SolidPodService ;
+  ns0:supportsCredentials ns0:SupportsCredentials ;
+  ns0:uriInDns ns0:uriInDns ;
+  ns0:web2Accounts ns0:Web2Accounts ;
+  ns0:web3Accounts ns0:Web3Accounts .
+
+ns0:DomainPurpose
+  a rdf:Property, "rdf:Property"^^xsd:string ;
+  rdfs:comment "Describes the purpose and characteristics of the domain."^^xsd:string ;
+  rdfs:label "Domain Purpose"^^xsd:string ;
+  rdfs:subClassOf "schema:Thing"^^xsd:string .
+
+ns0:Credentials
+  a <https://webcivics.github.io/ontologies/dev/web3#Credentials> ;
+  rdfs:comment "Describes the credentials supported by the site."^^xsd:string ;
+  rdfs:label "Credentials"^^xsd:string .
+
+ns0:PersonalInformation
+  a rdf:Property, "rdf:Property"^^xsd:string ;
+  rdfs:comment "Describes personal information if the domain is a personal domain."^^xsd:string ;
+  rdfs:label "Personal Information"^^xsd:string ;
+  rdfs:subClassOf "adp:DomainPurpose"^^xsd:string .
+
+ns0:checksum
+  a rdf:Property, "rdf:Property"^^xsd:string ;
+  rdfs:comment "Represents the checksum value of the ADP document."^^xsd:string ;
+  rdfs:label "Checksum"^^xsd:string .
+
+ns0:ContentClassification
+  a rdf:Property, "rdf:Property"^^xsd:string ;
+  rdfs:comment "Describes the content classifications of the site."^^xsd:string ;
+  rdfs:label "Content Classification"^^xsd:string ;
+  rdfs:subClassOf "adp:DomainPurpose"^^xsd:string .
+
+ns0:MyDataService
+  a <https://schema.mydata.org/core/DataService> ;
+  rdfs:comment "Describes the MyData service associated with the domain."^^xsd:string ;
+  rdfs:label "MyData Service"^^xsd:string .
+
+ns0:SiteType
+  a rdf:Property, "rdf:Property"^^xsd:string ;
+  rdfs:comment "Describes the type of the site, e.g., AI site, humanitarian site, government site."^^xsd:string ;
+  rdfs:label "Site Type"^^xsd:string ;
+  rdfs:subClassOf "adp:DomainPurpose"^^xsd:string .
+
+ns0:SolidPodService
+  a <http://www.w3.org/ns/solid/terms#Pod> ;
+  rdfs:comment "Describes the Solid Pod service associated with the domain."^^xsd:string ;
+  rdfs:label "Solid Pod Service"^^xsd:string .
+
+ns0:SupportsCredentials
+  a rdf:Property, "rdf:Property"^^xsd:string ;
+  rdfs:comment "Indicates whether the site supports credentials."^^xsd:string ;
+  rdfs:label "Supports Credentials"^^xsd:string ;
+  rdfs:subClassOf "adp:DomainPurpose"^^xsd:string .
+
+ns0:uriInDns
+  a rdf:Property, "rdf:Property"^^xsd:string ;
+  rdfs:comment "Represents the URI of the ADP document stored in a DNS TXT record for the domain."^^xsd:string ;
+  rdfs:label "URI in DNS"^^xsd:string .
+
+ns0:Web2Accounts
+  a <https://webcivics.github.io/ontologies/dev/web2#Accounts> ;
+  rdfs:comment "Describes web2 accounts associated with the domain."^^xsd:string ;
+  rdfs:label "Web2 Accounts"^^xsd:string .
+
+ns0:Web3Accounts
+  a <https://webcivics.github.io/ontologies/dev/web3#Accounts> ;
+  rdfs:comment "Describes web3 accounts associated with the domain."^^xsd:string ;
+  rdfs:label "Web3 Accounts"^^xsd:string .

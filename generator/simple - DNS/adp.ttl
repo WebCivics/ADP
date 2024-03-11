@@ -1,0 +1,50 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix adp: <http://webcivics.github.io/ontologies/adp#>.
+@prefix schema: <http://schema.org/>.
+
+# Class Definitions
+adp:Agent rdf:type schema:Person.
+
+adp:OnlineAccount rdf:type schema:WebPage.
+
+adp:SocialMediaAccount rdf:type adp:OnlineAccount;
+  adp:hasUsername rdf:Property;
+  schema:description rdf:Property.
+
+adp:DeveloperAccount rdf:type adp:OnlineAccount;
+  adp:hasUsername rdf:Property;
+  schema:description rdf:Property.
+
+adp:VideoSharingAccount rdf:type adp:OnlineAccount;
+  adp:hasUsername rdf:Property;
+  schema:description rdf:Property.
+
+# Property Definitions
+adp:hasLinkedinAccount rdf:type rdf:Property, owl:ObjectProperty;
+  rdfs:domain adp:SocialMediaAccount;
+  rdfs:range adp:LinkedinAccount.
+
+adp:hasTwitterAccount rdf:type rdf:Property, owl:ObjectProperty;
+  rdfs:domain adp:SocialMediaAccount;
+  rdfs:range adp:TwitterAccount.
+
+adp:hasGithubAccount rdf:type rdf:Property, owl:ObjectProperty;
+  rdfs:domain adp:DeveloperAccount;
+  rdfs:range adp:GithubAccount.
+
+adp:hasFacebookAccount rdf:type rdf:Property, owl:ObjectProperty;
+  rdfs:domain adp:SocialMediaAccount;
+  rdfs:range adp:FacebookAccount.
+
+# Add more property definitions for other account types
+
+adp:hasUsername rdf:type rdf:Property, owl:DatatypeProperty;
+  rdfs:domain adp:OnlineAccount;
+  rdfs:range xsd:string.
+
+schema:description rdf:type rdf:Property, owl:DatatypeProperty;
+  rdfs:domain adp:OnlineAccount;
+  rdfs:range xsd:string.

@@ -1,0 +1,54 @@
+{
+    "@context": {
+      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "owl": "http://www.w3.org/2002/07/owl#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "schema": "http://schema.org/",
+      "adp": "http://webcivics.github.io/ontologies/adp#"
+    },
+    "@graph": [
+      {
+        "@id": "adp:CryptoAccount",
+        "@type": "owl:Class"
+      },
+      {
+        "@id": "adp:hasAccountName",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:CryptoAccount"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasBlockchainType",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:CryptoAccount"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasWalletAddress",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:CryptoAccount"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasPrivateKey",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:CryptoAccount"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasPublicKey",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:CryptoAccount"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasBalance",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:CryptoAccount"},
+        "rdfs:range": {"@id": "xsd:decimal"}
+      }
+      // Add more properties specific to cryptocurrency accounts
+    ]
+  }
+  

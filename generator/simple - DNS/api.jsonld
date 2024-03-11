@@ -1,0 +1,89 @@
+{
+    "@graph": [
+      {
+        "@id": "adp:hasAPIAddress",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:API"},
+        "rdfs:range": {"@id": "xsd:anyURI"}
+      },
+      {
+        "@id": "adp:hasAPIDocs",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:API"},
+        "rdfs:range": {"@id": "xsd:anyURI"}
+      },
+      {
+        "@id": "adp:hasAPIFormat",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:API"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasAPIType",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:API"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasAPIVersion",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:API"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasAPIKey",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:API"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasAPISecret",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:API"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasAPIToken",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:API"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasAPIUsername",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:API"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasAPIPassword",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:API"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasAPIAuthType",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:API"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasAPIAuthAddress",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:API"},
+        "rdfs:range": {"@id": "xsd:anyURI"}
+      },
+      {
+        "@id": "adp:hasAPIAuthDocs",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:API"},
+        "rdfs:range": {"@id": "xsd:anyURI"}
+      },
+      {
+        "@id": "adp:hasAPIAuthFormat",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:domain": {"@id": "adp:API"},
+        "rdfs:range": {"@id": "xsd:string"}
+      }
+    ]
+  }
+  

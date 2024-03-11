@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WordNet Search</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://linkeddata.github.io/rdflib.js/dist/rdflib.min.js"></script>
+</head>
+<body>
+
+<label for="searchInput">Search Word:</label>
+<input type="text" id="searchInput">
+
+<ul id="resultsList"></ul>
+
+<script>
+  $(function() {
+    const store = $rdf.graph();
+
+    function loadRdfData(data) {
+      $rdf.parse(data, store, 'http://wordnet.example/', 'application/n-triples');
+    }
+
+    function searchWord(searchTerm) {
+      const results = store.each(undefined, undefined, undefined, undefined, searchTerm.toLowerCase());
+
+      return results.map(result => result.value);
+    }
+
+    function displayResults(results) {
+      const resultsList = $('#resultsList');
+      resultsList.empty();
+
+      results.forEach(result => {
+        const listItem = $('<li>').text(result);
+        resultsList.append(listItem);
+      });
+    }
+
+    $('#searchInput').on('input', function() {
+      const searchTerm = $(this).val();
+      const results = searchWord(searchTerm);
+      displayResults(results);
+    });
+
+    // Load RDF data (replace 'wordnet.nt' with your actual RDF file)
+    $.ajax({
+      url: 'wordnet.nt', // Replace with the actual path to your WordNet RDF file
+      method: 'GET',
+      success: function(data) {
+        loadRdfData(data);
+        console.log('WordNet data loaded.');
+      },
+      error: function(error) {
+        console.error('Error loading WordNet data:', error);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

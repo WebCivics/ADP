@@ -1,0 +1,379 @@
+{
+    "@context": {
+      "schema": "http://schema.org/",
+      "gr": "http://purl.org/goodrelations/v1#",
+      "skos": "https://www.w3.org/2004/02/skos/core#",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "dc": "http://purl.org/dc/elements/1.1/",
+      "unspsc": "https://www.unspsc.org/"
+    },
+    "categories": [
+      {
+        "@id": "schema:SocialMedia",
+        "@type": "schema:CategoryCode",
+        "schema:name": "Social Media"
+      },
+      {
+        "@id": "schema:Developer",
+        "@type": "schema:CategoryCode",
+        "schema:name": "Developer"
+      },
+      {
+        "@id": "schema:Finance",
+        "@type": "schema:CategoryCode",
+        "schema:name": "Finance"
+      },
+      {
+        "@id": "schema:Entertainment",
+        "@type": "schema:CategoryCode",
+        "schema:name": "Entertainment"
+      },
+      {
+        "@id": "schema:Communication",
+        "@type": "schema:CategoryCode",
+        "schema:name": "Communication"
+      },
+      {
+        "@id": "schema:E-commerce",
+        "@type": "schema:CategoryCode",
+        "schema:name": "E-commerce"
+      },
+      {
+        "@id": "schema:Technology",
+        "@type": "schema:CategoryCode",
+        "schema:name": "Technology"
+      },
+      {
+        "@id": "schema:Health",
+        "@type": "schema:CategoryCode",
+        "schema:name": "Health"
+      },
+      {
+        "@id": "schema:Education",
+        "@type": "schema:CategoryCode",
+        "schema:name": "Education"
+      },
+      {
+        "@id": "schema:News",
+        "@type": "schema:CategoryCode",
+        "schema:name": "News"
+      },
+          {
+            "@id": "schema:SocialMedia",
+            "@type": "schema:CategoryCode",
+            "schema:name": "Social Media"
+          },
+          {
+            "@id": "schema:Developer",
+            "@type": "schema:CategoryCode",
+            "schema:name": "Developer"
+          },
+          {
+            "@id": "schema:Finance",
+            "@type": "schema:CategoryCode",
+            "schema:name": "Finance"
+          },
+          {
+            "@id": "schema:Entertainment",
+            "@type": "schema:CategoryCode",
+            "schema:name": "Entertainment"
+          },
+          {
+            "@id": "schema:Communication",
+            "@type": "schema:CategoryCode",
+            "schema:name": "Communication"
+          },
+          {
+            "@id": "schema:E-commerce",
+            "@type": "schema:CategoryCode",
+            "schema:name": "E-commerce"
+          },
+          {
+            "@id": "schema:Technology",
+            "@type": "schema:CategoryCode",
+            "schema:name": "Technology"
+          },
+          {
+            "@id": "schema:Health",
+            "@type": "schema:CategoryCode",
+            "schema:name": "Health"
+          },
+          {
+            "@id": "schema:Education",
+            "@type": "schema:CategoryCode",
+            "schema:name": "Education"
+          },
+          {
+            "@id": "schema:News",
+            "@type": "schema:CategoryCode",
+            "schema:name": "News"
+          },
+          {
+            "@id": "schema:Sports",
+            "@type": "schema:CategoryCode",
+            "schema:name": "Sports"
+          },
+          {
+            "@id": "schema:Travel",
+            "@type": "schema:CategoryCode",
+            "schema:name": "Travel"
+          },
+          {
+            "@id": "schema:Food",
+            "@type": "schema:CategoryCode",
+            "schema:name": "Food"
+          },
+            {
+                "@id": "schema:Shopping",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Shopping"
+            },
+            {
+                "@id": "schema:Weather",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Weather"
+            },
+            {
+                "@id": "schema:Utilities",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Utilities"
+            },
+            {
+                "@id": "schema:Productivity",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Productivity"
+            },
+            {
+                "@id": "schema:Photography",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Photography"
+            },
+            {
+                "@id": "schema:Music",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Music"
+            },
+            {
+                "@id": "schema:Books",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Books"
+            },
+            {
+                "@id": "schema:Medical",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Medical"
+            },
+            {
+                "@id": "schema:Business",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Business"
+            },
+            {
+                "@id": "schema:Reference",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Reference"
+            },
+            {
+                "@id": "schema:Navigation",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Navigation"
+            },
+            {
+                "@id": "schema:Travel",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Travel"
+            },
+            {
+                "@id": "schema:Health",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Health"
+            },
+            {
+                "@id": "schema:Education",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Education"
+            },
+            {
+                "@id": "schema:News",
+                "@type": "schema:CategoryCode",
+                "schema:name": "News"
+            },
+            {
+                "@id": "schema:Sports",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Sports"
+            },
+            {
+                "@id": "schema:performingArts",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Performing Arts"
+            },
+            {
+                "@id": "schema:VisualArts",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Visual Arts"
+            },
+            {
+                "@id": "schema:Crafts",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Crafts"
+            },
+            {
+                "@id": "schema:Design",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Design"
+            },
+            {
+                "@id": "schema:Architecture",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Architecture"
+            },
+            {
+                "@id": "schema:Automotive",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Automotive"
+            },
+            {
+                "@id": "schema:Beauty",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Beauty"
+            },
+            {
+                "@id": "schema:Parenting",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Parenting"
+            },
+            {
+                "@id": "schema:Pets",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Pets"
+            },
+            {
+                "@id": "schema:Gardening",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Gardening"
+            },
+            {
+                "@id": "schema:Home",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Home"
+            },
+            {
+                "@id": "schema:RealEstate",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Real Estate"
+            },
+            {
+                "@id": "schema:Shopping",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Shopping"
+            },
+            {
+                "@id": "schema:Weather",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Weather"
+            },
+            {
+                "@id": "schema:Utilities",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Utilities"
+            },
+            {
+                "@id": "schema:Productivity",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Productivity"
+            },
+            {
+                "@id": "schema:Developer",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Developer"
+              },
+              {
+                "@id": "schema:Finance",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Finance"
+              },
+              {
+                "@id": "schema:Entertainment",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Entertainment"
+              },
+              {
+                "@id": "schema:Communication",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Communication"
+              },
+              {
+                "@id": "schema:E-commerce",
+                "@type": "schema:CategoryCode",
+                "schema:name": "E-commerce"
+              },
+              {
+                "@id": "schema:Technology",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Technology"
+              },
+              {
+                "@id": "schema:Health",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Health"
+              },
+              {
+                "@id": "schema:Education",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Education"
+              },
+              {
+                "@id": "schema:News",
+                "@type": "schema:CategoryCode",
+                "schema:name": "News"
+              },
+              {
+                "@id": "schema:Sports",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Sports"
+              },
+              {
+                "@id": "schema:Travel",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Travel"
+              },
+              {
+                "@id": "schema:Food",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Food"
+              },
+              {
+                "@id": "gr:ProductOrService",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Product or Service"
+              },
+              {
+                "@id": "skos:Concept",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Concept"
+              },
+              {
+                "@id": "foaf:topic_interest",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Topic of Interest"
+              },
+              {
+                "@id": "dc:subject",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Subject"
+              },
+              {
+                "@id": "unspsc:Category",
+                "@type": "schema:CategoryCode",
+                "schema:name": "UNSPSC Category"
+              },
+            {
+                "@id": "schema:Photography",
+                "@type": "schema:CategoryCode",
+                "schema:name": "Photography"
+            },
+
+        ]
+      }
+      

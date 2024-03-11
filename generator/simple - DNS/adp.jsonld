@@ -1,0 +1,277 @@
+{
+    "@context": {
+      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "owl": "http://www.w3.org/2002/07/owl#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "schema": "http://schema.org/",
+      "adp": "http://webcivics.github.io/ontologies/adp#"
+    },
+    "@graph": [
+      {
+        "@id": "adp:Account",
+        "@type": "owl:Class"
+      },
+      {
+        "@id": "adp:hasAccountName",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:label": "hasAccountName",
+        "rdfs:domain": {"@id": "adp:Account"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasAccountType",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:label": "Account Type",
+        "rdfs:domain": {"@id": "adp:Account"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "adp:hasWebsiteAddress",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:label": "Website Address",
+        "rdfs:domain": {"@id": "adp:Account"},
+        "rdfs:range": {"@id": "xsd:anyURI"}
+      },
+      {
+        "@id": "adp:hasPrivacyPolicy",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:label": "Privacy Policy",
+        "rdfs:domain": {"@id": "adp:Account"},
+        "rdfs:range": {"@id": "xsd:anyURI"}
+      },
+      {
+        "@id": "adp:hasTermsOfService",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:label": "Terms of Service",
+        "rdfs:domain": {"@id": "adp:Account"},
+        "rdfs:range": {"@id": "xsd:anyURI"}
+      },
+      {
+        "@id": "adp:hasComplaints",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:label": "Complaints",
+        "rdfs:domain": {"@id": "adp:Account"},
+        "rdfs:range": {"@id": "xsd:anyURI"}
+      },
+      {
+        "@id": "adp:hasLoginAddress",
+        "@type": ["rdf:Property", "owl:ObjectProperty"],
+        "rdfs:label": "Login Address",
+        "rdfs:domain": {"@id": "adp:Account"},
+        "rdfs:range": {"@id": "xsd:anyURI"}
+      },
+        {
+            "@id": "adp:hasLogoutAddress",
+            "@type": ["rdf:Property", "owl:ObjectProperty"],
+            "rdfs:label": "Logout Address",
+            "rdfs:domain": {"@id": "adp:Account"},
+            "rdfs:range": {"@id": "xsd:anyURI"}
+        },
+        {
+            "@id": "adp:hasAccountStatus",
+            "@type": ["rdf:Property", "owl:ObjectProperty"],
+            "rdfs:label": "Account status",
+            "rdfs:domain": {"@id": "adp:Account"},
+            "rdfs:range": {"@id": "xsd:string"}
+        },
+        {
+            "@id": "adp:hasAccountCreationDate",
+            "@type": ["rdf:Property", "owl:ObjectProperty"],
+            "rdfs:label": "Account Creation Date",
+            "rdfs:domain": {"@id": "adp:Account"},
+            "rdfs:range": {"@id": "xsd:date"}
+        },
+        {
+            "@id": "adp:hasAccountLastLoginDate",
+            "@type": ["rdf:Property", "owl:ObjectProperty"],
+            "rdfs:label": "Account Last Login Date",
+            "rdfs:domain": {"@id": "adp:Account"},
+            "rdfs:range": {"@id": "xsd:date"}
+        },
+        {
+            "@id": "adp:hasAccountLastLogoutDate",
+            "@type": ["rdf:Property", "owl:ObjectProperty"],
+            "rdfs:label": "Account Last Logout Date",
+            "rdfs:domain": {"@id": "adp:Account"},
+            "rdfs:range": {"@id": "xsd:date"}
+        },
+        {
+            "@id": "adp:hasAccountLastUpdateDate",
+            "@type": ["rdf:Property", "owl:ObjectProperty"],
+            "rdfs:label": "Account Last Update Date",
+            "rdfs:domain": {"@id": "adp:Account"},
+            "rdfs:range": {"@id": "xsd:date"}
+        },
+        {
+            "@id": "adp:hasAccountLastPasswordChangeDate",
+            "@type": ["rdf:Property", "owl:ObjectProperty"],
+            "rdfs:label": "Last Password Change Date",
+            "rdfs:domain": {"@id": "adp:Account"},
+            "rdfs:range": {"@id": "xsd:date"}
+        },
+        {
+            "@id": "adp:hasAccountLastPasswordResetDate",
+            "@type": ["rdf:Property", "owl:ObjectProperty"],
+            "rdfs:label": "Password Reset Date",
+            "rdfs:domain": {"@id": "adp:Account"},
+            "rdfs:range": {"@id": "xsd:date"}
+        },
+    
+     {
+        "@id": "adp:hasUsername",
+        "@type": ["rdf:Property", "owl:DatatypeProperty"],
+        "rdfs:label": "Username",
+        "rdfs:domain": {"@id": "adp:OnlineAccount"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+      {
+        "@id": "schema:description",
+        "@type": ["rdf:Property", "owl:DatatypeProperty"],
+        "rdfs:label": "Description",
+        "rdfs:domain": {"@id": "adp:OnlineAccount"},
+        "rdfs:range": {"@id": "xsd:string"}
+      },
+        {
+            "@id": "adp:hasPassword",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Password",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:string"}
+        },
+        {
+            "@id": "adp:hasEmail",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Email Address",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:string"}
+        },
+        {
+            "@id": "adp:hasPhone",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Phone Number",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:string"}
+        },
+        {
+            "@id": "adp:hasAddress",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Address",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:string"}
+        },
+        {
+            "@id": "adp:hasCity",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "City",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:string"}
+        },
+        {
+            "@id": "adp:hasState",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "State",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:string"}
+        },
+        {
+            "@id": "adp:hasZipCode",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "ZIP / Post Code",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:string"}
+        },
+        {
+            "@id": "adp:hasCountry",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Country",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:string"}
+        },
+        {
+            "@id": "adp:hasDateOfBirth",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Date of Birth",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:date"}
+        },
+        {
+            "@id": "adp:hasGender",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Gender",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:string"}
+        },
+        {
+            "@id": "adp:hasProfilePicture",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Profile Picture URL",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:anyURI"}
+        },
+        {
+            "@id": "adp:hasProfileCoverPicture",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Profile Cover Picture URL",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:anyURI"}
+        },
+        {
+            "@id": "adp:hasProfileBio",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Profile Bio",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:string"}
+        },
+        {
+            "@id": "adp:hasProfileWebsite",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Profile Website URL",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:anyURI"}
+        },
+        {
+            "@id": "adp:hasProfileSocialMedia",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Social Media Account URL",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:anyURI"}
+        },
+        {
+            "@id": "adp:hasProfileSocialMediaUsername",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Social Media Account Username",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:string"}
+        },
+        {
+            "@id": "adp:hasProfileSocialMediaLink",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Social Media Site Link URL",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:anyURI"}
+        },
+        {
+            "@id": "adp:hasProfileSocialMediaType",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Social Media Network Type",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:string"}
+        },
+        {
+            "@id": "adp:SocialMediaPlatformAPI",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Social Media Platform API URL",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:string"}
+        },
+        {
+            "@id": "adp:SocialMediaPlatformAPIType",
+            "@type": ["rdf:Property", "owl:DatatypeProperty"],
+            "rdfs:label": "Social Media Platform API Type",
+            "rdfs:domain": {"@id": "adp:OnlineAccount"},
+            "rdfs:range": {"@id": "xsd:string"}
+        }
+    ]
+  }
+  

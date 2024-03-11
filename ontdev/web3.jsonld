@@ -1,0 +1,103 @@
+{
+    "@id": "https://webcivics.github.io/adp/ontdev/web3",
+    "@context": {
+      "did": "https://www.w3.org/ns/did#",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "owl": "http://www.w3.org/2002/07/owl#",
+      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "schema": "http://schema.org/", 
+      "vc": "https://www.w3.org/2018/credentials#",
+      "web3": "https://webcivics.github.io/adp/ontdev/web3#", 
+      "xmlns": "http://www.w3.org/2000/xmlns/",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "adp": "https://webcivics.github.io/adp/ontdev/adp#"       
+    },
+    "web3:Web3Identifier": {
+      "@type": "owl:Class",
+      "rdfs:subClassOf": "schema:Intangible", 
+      "rdfs:comment": "A unique identifier in the Web3 context",
+      "rdfs:label": "Web3 Identifier"
+    },
+  
+    "web3:type": {
+      "@type": "rdf:Property",
+      "rdfs:domain": "web3:Web3Identifier",
+      "rdfs:range": "rdfs:Literal" 
+    },
+  
+    "web3:chain": {
+      "@type": "rdf:Property",
+      "rdfs:domain": "web3:Web3Identifier",
+      "rdfs:range": "rdfs:Literal" 
+    },
+  
+    "web3:chainURI": {
+      "@type": "rdf:Property",
+      "rdfs:domain": "web3:Web3Identifier",
+      "rdfs:range": "rdfs:Resource" 
+    },
+  
+    "web3:value": {
+        "@type": "rdf:Property",
+        "rdfs:domain": "web3:Web3Identifier",
+        "rdfs:range": "rdfs:Literal" 
+    },
+  
+    "web3:Individual": {
+      "@type": "owl:Class",
+      "rdfs:subClassOf": "foaf:Person" 
+    },
+  
+    "web3:owns": { 
+      "@type": "rdf:Property",
+      "rdfs:domain": [ "web3:Individual", "web3:Entity" ], 
+      "rdfs:range": "web3:Web3Identifier"  
+    },
+  
+    "web3:Entity": {
+      "@type": "owl:Class",
+      "rdfs:subClassOf": "schema:Organization", 
+      "rdfs:comment": "An organization, project, or protocol in Web3",
+      "rdfs:label": "Web3 Entity" 
+    },
+  
+    "web3:Wallet": {
+      "@type": "owl:Class",
+      "rdfs:subClassOf": "schema:SoftwareApplication", 
+      "rdfs:comment": "Software for managing crypto assets and Web3 interactions",
+      "rdfs:label": "Web3 Wallet" 
+    },
+  
+    "web3:walletType": {
+      "@type": "rdf:Property",
+      "rdfs:domain": "web3:Wallet",
+      "rdfs:range": "rdfs:Literal" 
+    },
+  
+    "web3:supportedChains": {
+      "@type": "rdf:Property",
+      "rdfs:domain": "web3:Wallet",
+      "rdfs:range": "rdfs:Literal"  
+    },
+  
+    "web3:holds": { 
+      "@type": "rdf:Property",
+      "rdfs:domain": "web3:Wallet", 
+      "rdfs:range": "web3:Web3Identifier"  
+    },
+  
+    "web3:DID": {
+      "@type": "owl:Class",
+      "rdfs:subClassOf": "web3:Web3Identifier",  
+      "rdfs:comment": "A Decentralized Identifier (DID)",
+      "rdfs:label": "DID" 
+    }, 
+  
+    "web3:didDocument": {
+      "@type": "rdf:Property",
+      "rdfs:domain": "web3:DID",
+      "rdfs:range": "rdfs:Resource" 
+    }
+  }
+  

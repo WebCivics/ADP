@@ -1,0 +1,80 @@
+{
+    "@id": "https://webcivics.github.io/adp/ontdev/web2",
+        "@type": "rdf:Property",
+        "rdfs:comment": "An ontology for describing Web 2.0 sites and related concepts.",
+        "rdfs:label": "Web 2.0 Ontology",
+        "rdf:type": "rdfs:Class",
+        "rdf:subClassOf": "web2:CreativeWork",
+        "rdfs:subClassOf": {
+          "@id": "web2:Thing",
+          "@type": "rdf:Property"
+        },
+    "@context": {
+      "schema": "http://schema.org/",
+      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "owl": "http://www.w3.org/2002/07/owl#",
+      "dc": "http://purl.org/dc/elements/1.1/",
+      "dct": "http://purl.org/dc/terms/",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "skos": "http://www.w3.org/2004/02/skos/core#",
+      "vcard": "http://www.w3.org/2006/vcard/ns#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+      "adp": "https://webcivics.github.io/adp/ontdev/adp#"
+    },
+    "web2:hasWebOfDataEndpoint": {
+      "@id": "web2:hasWebOfDataEndpoint",
+      "@type": "rdf:Property",
+      "rdfs:label": "hasWebOfDataEndpoint",
+      "rdfs:comment": "Relates a Web 2.0 site to its Web of Data Endpoint.",
+      "rdf:type": "rdf:Property",
+      "rdfs:domain": {
+        "@id": "web2:Web2.0Site",
+        "@type": "rdf:Property"
+      },
+      "rdfs:range": {
+        "@id": "web2:WebOfDataEndpoint",
+        "@type": "rdf:Property"
+      }
+    },
+    "web2:accountName": {
+      "@id": "web2:accountName",
+      "@type": "rdf:Property",
+      "rdfs:label": "accountName",
+      "rdfs:comment": "The account name associated with a user or entity on a Web 2.0 site.",
+      "rdf:type": "rdf:Property",
+      "rdfs:domain": {
+        "@id": "web2:Web2.0Site",
+        "@type": "rdf:Property"
+      },
+      "rdfs:range": "xsd:string"
+    },
+    "web2:serviceCategory": {
+      "@id": "web2:serviceCategory",
+      "@type": "rdf:Property",
+      "rdfs:label": "serviceCategory",
+      "rdfs:comment": "The category of services offered by a Web 2.0 site.",
+      "rdf:type": "rdf:Property",
+      "rdfs:domain": {
+        "@id": "web2:Web2.0Site",
+        "@type": "rdf:Property"
+      },
+      "rdfs:range": "xsd:string"
+    },
+    "web2:Web2.0Site": {
+      "@id": "web2:Web2.0Site",
+      "@type": "rdf:Property",
+      "rdfs:label": "Web 2.0 Site",
+      "rdfs:comment": "A website or online platform characterized by user-generated content and social interaction.",
+      "rdf:type": "rdf:Property"
+    },
+    "web2:WebOfDataEndpoint": {
+      "@id": "web2:WebOfDataEndpoint",
+      "@type": "rdf:Property",
+      "rdfs:label": "Web of Data Endpoint",
+      "rdfs:comment": "An endpoint providing access to linked data on the web.",
+      "rdf:type": "rdf:Property"
+    }
+  }
+  

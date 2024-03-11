@@ -1,0 +1,60 @@
+@prefix adp: <http://webcivics.github.io/ontologies/adp#> .
+    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+    @prefix schema: <http://schema.org/> .
+    @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+    @prefix ogp: <http://ogp.me/ns#> .
+    
+    adp:Agent rdf:type adp:Class ;
+        rdfs:label "Agent" .
+    
+    adp:OnlineAccount rdf:type adp:Class ;
+        rdfs:label "OnlineAccount" .
+        sameAs: [ schema:OnlineAccount ] .
+    
+    adp:CryptoAccount rdf:type adp:Class ;
+        rdfs:label "CryptoAccount" ;
+        rdfs:subClassOf adp:Agent .
+    
+    adp:hasName rdf:type rdf:Property ;
+        rdfs:domain adp:Agent ;
+        rdfs:label "hasName" ;
+        rdfs:range xsd:string ;
+        sameAs: [ foaf:name ] .
+    
+    adp:hasOnlineAccount rdf:type rdf:Property ;
+        rdfs:domain adp:Agent ;
+        rdfs:label "hasOnlineAccount" ;
+        rdfs:range adp:OnlineAccount ;
+        sameAs: [ schema:account ] .
+    
+    adp:hasLinkedinAccount rdf:type rdf:Property ;
+        rdfs:domain adp:OnlineAccount ;
+        rdfs:label "hasLinkedinAccount" ;
+        rdfs:range xsd:string ;
+        sameAs: [ schema:socialMedia, schema:sameAs, foaf:account ] .
+    
+    adp:hasTwitterAccount rdf:type rdf:Property ;
+        rdfs:domain adp:OnlineAccount ;
+        rdfs:label "hasTwitterAccount" ;
+        rdfs:range xsd:string ;
+        sameAs: [ schema:socialMedia, schema:sameAs, foaf:account ] .
+    
+    adp:hasGithubAccount rdf:type rdf:Property ;
+        rdfs:domain adp:OnlineAccount ;
+        rdfs:label "hasGithubAccount" ;
+        rdfs:range xsd:string ;
+        sameAs: [ schema:socialMedia, schema:sameAs, foaf:account ] .
+    
+    adp:hasCryptoAccount rdf:type rdf:Property ;
+        rdfs:domain adp:Agent ;
+        rdfs:label "hasCryptoAccount" ;
+        rdfs:range adp:CryptoAccount .
+    
+    adp:hasEcashAccount rdf:type rdf:Property ;
+        rdfs:domain adp:CryptoAccount ;
+        rdfs:label "hasEcashAccount" ;
+        rdfs:range xsd:string ;
+        sameAs: [ schema:accountId ] .
+    

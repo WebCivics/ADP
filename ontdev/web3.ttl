@@ -1,0 +1,80 @@
+@prefix ns0: <https://webcivics.github.io/adp/ontdev/web3#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<https://webcivics.github.io/adp/ontdev/web3>
+  ns0:DID [
+    a owl:Class ;
+    rdfs:comment "A Decentralized Identifier (DID)"^^xsd:string ;
+    rdfs:label "DID"^^xsd:string ;
+    rdfs:subClassOf "web3:Web3Identifier"^^xsd:string
+  ] ;
+  ns0:Entity [
+    a owl:Class ;
+    rdfs:comment "An organization, project, or protocol in Web3"^^xsd:string ;
+    rdfs:label "Web3 Entity"^^xsd:string ;
+    rdfs:subClassOf "schema:Organization"^^xsd:string
+  ] ;
+  ns0:Individual [
+    a owl:Class ;
+    rdfs:subClassOf "foaf:Person"^^xsd:string
+  ] ;
+  ns0:Wallet [
+    a owl:Class ;
+    rdfs:comment "Software for managing crypto assets and Web3 interactions"^^xsd:string ;
+    rdfs:label "Web3 Wallet"^^xsd:string ;
+    rdfs:subClassOf "schema:SoftwareApplication"^^xsd:string
+  ] ;
+  ns0:Web3Identifier [
+    a owl:Class ;
+    rdfs:comment "A unique identifier in the Web3 context"^^xsd:string ;
+    rdfs:label "Web3 Identifier"^^xsd:string ;
+    rdfs:subClassOf "schema:Intangible"^^xsd:string
+  ] ;
+  ns0:chain [
+    a rdf:Property ;
+    rdfs:domain "web3:Web3Identifier"^^xsd:string ;
+    rdfs:range "rdfs:Literal"^^xsd:string
+  ] ;
+  ns0:chainURI [
+    a rdf:Property ;
+    rdfs:domain "web3:Web3Identifier"^^xsd:string ;
+    rdfs:range "rdfs:Resource"^^xsd:string
+  ] ;
+  ns0:didDocument [
+    a rdf:Property ;
+    rdfs:domain "web3:DID"^^xsd:string ;
+    rdfs:range "rdfs:Resource"^^xsd:string
+  ] ;
+  ns0:holds [
+    a rdf:Property ;
+    rdfs:domain "web3:Wallet"^^xsd:string ;
+    rdfs:range "web3:Web3Identifier"^^xsd:string
+  ] ;
+  ns0:owns [
+    a rdf:Property ;
+    rdfs:domain "web3:Individual"^^xsd:string, "web3:Entity"^^xsd:string ;
+    rdfs:range "web3:Web3Identifier"^^xsd:string
+  ] ;
+  ns0:supportedChains [
+    a rdf:Property ;
+    rdfs:domain "web3:Wallet"^^xsd:string ;
+    rdfs:range "rdfs:Literal"^^xsd:string
+  ] ;
+  ns0:type [
+    a rdf:Property ;
+    rdfs:domain "web3:Web3Identifier"^^xsd:string ;
+    rdfs:range "rdfs:Literal"^^xsd:string
+  ] ;
+  ns0:value [
+    a rdf:Property ;
+    rdfs:domain "web3:Web3Identifier"^^xsd:string ;
+    rdfs:range "rdfs:Literal"^^xsd:string
+  ] ;
+  ns0:walletType [
+    a rdf:Property ;
+    rdfs:domain "web3:Wallet"^^xsd:string ;
+    rdfs:range "rdfs:Literal"^^xsd:string
+  ] .

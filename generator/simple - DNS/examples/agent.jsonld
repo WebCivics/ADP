@@ -1,0 +1,46 @@
+{
+  "@context": {
+    "adp": "http://webcivics.github.io/ontologies/adp#",
+    "@embed": "@context",
+    "@context": {
+      "adp:seeAlso": {
+        "@id": "sailingdigital.com/ns/ontology.ttl",
+        "@type": "@id"
+      }
+    }
+  },
+  "@type": "adp:Agent",
+  "adp:hasName": "Timothy Holborn",
+  "adp:hasOnlineAccount": [
+    {
+      "@type": "adp:OnlineAccount",
+      "adp:hasLinkedinAccount": "ubiquitous"
+    },
+    {
+      "@type": "adp:OnlineAccount",
+      "adp:hasTwitterAccount": "sailingdigital"
+    },
+    {
+      "@type": "adp:OnlineAccount",
+      "adp:hasGithubAccount": "mediaprophet"
+    },
+    {
+      "@type": "adp:OnlineAccount",
+      "adp:hasSolidWebID": "https://id.inrupt.com/ubiquitous"
+    },
+    {
+      "@type": "adp:OnlineAccount",
+      "adp:hasSolidPodStorage": "https://storage.ap.inrupt.com/b436b6a9-9c4c-45bc-9d22-d1b068e84992/"
+    }
+  ],
+  "adp:hasCryptoAccount": [
+    {
+      "@type": "adp:CryptoAccount",
+      "adp:hasEcashAccount": "ecash:qrhrfvpm9x3tsq0uj09pzrfcc495h55clswp7tjp9c"
+    }
+  ],
+  "adp:seeAlso": {
+    "@id": "sailingdigital.com/ns/ontology.ttl",
+    "adp:checksum": "014e538e09df1b35ff508ad00fa2e68d46f0704d4378453f60d8819baa9d9c96"
+  }
+}

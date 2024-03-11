@@ -1,0 +1,49 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ns0: <web2:Web2.> .
+@prefix ns1: <web2:> .
+
+<https://webcivics.github.io/adp/ontdev/web2>
+  a rdf:Property, "rdfs:Class"^^xsd:string ;
+  rdf:subClassOf "web2:CreativeWork"^^xsd:string ;
+  rdfs:comment "An ontology for describing Web 2.0 sites and related concepts."^^xsd:string ;
+  rdfs:label "Web 2.0 Ontology"^^xsd:string ;
+  rdfs:subClassOf <web2:Thing> ;
+  ns0:0Site ns0:0Site ;
+  ns1:WebOfDataEndpoint ns1:WebOfDataEndpoint ;
+  ns1:accountName ns1:accountName ;
+  ns1:hasWebOfDataEndpoint ns1:hasWebOfDataEndpoint ;
+  ns1:serviceCategory ns1:serviceCategory .
+
+ns1:Thing a rdf:Property .
+ns0:0Site
+  a rdf:Property, "rdf:Property"^^xsd:string ;
+  rdfs:comment "A website or online platform characterized by user-generated content and social interaction."^^xsd:string ;
+  rdfs:label "Web 2.0 Site"^^xsd:string .
+
+ns1:WebOfDataEndpoint
+  a rdf:Property, "rdf:Property"^^xsd:string ;
+  rdfs:comment "An endpoint providing access to linked data on the web."^^xsd:string ;
+  rdfs:label "Web of Data Endpoint"^^xsd:string .
+
+ns1:accountName
+  a rdf:Property, "rdf:Property"^^xsd:string ;
+  rdfs:comment "The account name associated with a user or entity on a Web 2.0 site."^^xsd:string ;
+  rdfs:domain ns0:0Site ;
+  rdfs:label "accountName"^^xsd:string ;
+  rdfs:range "xsd:string"^^xsd:string .
+
+ns1:hasWebOfDataEndpoint
+  a rdf:Property, "rdf:Property"^^xsd:string ;
+  rdfs:comment "Relates a Web 2.0 site to its Web of Data Endpoint."^^xsd:string ;
+  rdfs:domain ns0:0Site ;
+  rdfs:label "hasWebOfDataEndpoint"^^xsd:string ;
+  rdfs:range ns1:WebOfDataEndpoint .
+
+ns1:serviceCategory
+  a rdf:Property, "rdf:Property"^^xsd:string ;
+  rdfs:comment "The category of services offered by a Web 2.0 site."^^xsd:string ;
+  rdfs:domain ns0:0Site ;
+  rdfs:label "serviceCategory"^^xsd:string ;
+  rdfs:range "xsd:string"^^xsd:string .

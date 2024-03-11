@@ -1,0 +1,100 @@
+{
+    "@context": {
+      "schema": "http://schema.org/",
+      "web2": "https://webcivics.github.io/ontologies/dev/web2#",
+      "web3": "https://webcivics.github.io/ontologies/dev/web3#",
+      "solid": "http://www.w3.org/ns/solid/terms#",
+      "mydata": "https://schema.mydata.org/core/",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "adp": "https://webcivics.github.io/ontologies/dev/adp#"
+    },
+    "@id": "adp:AgentDiscoveryProtocol",
+    "@type": "schema:WebPage",
+    "schema:domainPurpose": {
+      "@id": "adp:DomainPurpose",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Describes the purpose and characteristics of the domain.",
+      "rdf:type": "rdf:Property",
+      "rdfs:subClassOf": "schema:Thing",
+      "rdfs:label": "Domain Purpose"
+    },
+    "adp:siteType": {
+      "@id": "adp:SiteType",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Describes the type of the site, e.g., AI site, humanitarian site, government site.",
+      "rdf:type": "rdf:Property",
+      "rdfs:subClassOf": "adp:DomainPurpose",
+      "rdfs:label": "Site Type"
+    },
+    "adp:contentClassification": {
+      "@id": "adp:ContentClassification",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Describes the content classifications of the site.",
+      "rdf:type": "rdf:Property",
+      "rdfs:subClassOf": "adp:DomainPurpose",
+      "rdfs:label": "Content Classification"
+    },
+    "adp:supportsCredentials": {
+      "@id": "adp:SupportsCredentials",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Indicates whether the site supports credentials.",
+      "rdf:type": "rdf:Property",
+      "rdfs:subClassOf": "adp:DomainPurpose",
+      "rdfs:label": "Supports Credentials"
+    },
+    "adp:Credentials": {
+      "@id": "adp:Credentials",
+      "@type": "web3:Credentials",
+      "rdfs:comment": "Describes the credentials supported by the site.",
+      "rdfs:label": "Credentials"
+    },
+    "adp:PersonalInformation": {
+      "@id": "adp:PersonalInformation",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Describes personal information if the domain is a personal domain.",
+      "rdf:type": "rdf:Property",
+      "rdfs:subClassOf": "adp:DomainPurpose",
+      "rdfs:label": "Personal Information"
+    },
+    "adp:web2Accounts": {
+      "@id": "adp:Web2Accounts",
+      "@type": "web2:Accounts",
+      "rdfs:comment": "Describes web2 accounts associated with the domain.",
+      "rdfs:label": "Web2 Accounts"
+    },
+    "adp:web3Accounts": {
+      "@id": "adp:Web3Accounts",
+      "@type": "web3:Accounts",
+      "rdfs:comment": "Describes web3 accounts associated with the domain.",
+      "rdfs:label": "Web3 Accounts"
+    },
+    "adp:solidPodService": {
+      "@id": "adp:SolidPodService",
+      "@type": "solid:Pod",
+      "rdfs:comment": "Describes the Solid Pod service associated with the domain.",
+      "rdfs:label": "Solid Pod Service"
+    },
+    "adp:mydataService": {
+      "@id": "adp:MyDataService",
+      "@type": "mydata:DataService",
+      "rdfs:comment": "Describes the MyData service associated with the domain.",
+      "rdfs:label": "MyData Service"
+    },
+    "adp:checksum": {
+      "@id": "adp:checksum",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Represents the checksum value of the ADP document.",
+      "rdf:type": "rdf:Property",
+      "rdfs:label": "Checksum"
+    },
+    "adp:uriInDns": {
+      "@id": "adp:uriInDns",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Represents the URI of the ADP document stored in a DNS TXT record for the domain.",
+      "rdf:type": "rdf:Property",
+      "rdfs:label": "URI in DNS"
+    }
+  }
+  
