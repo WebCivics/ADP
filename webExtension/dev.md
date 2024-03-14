@@ -8,6 +8,8 @@ The web-extension should also support a sidebar where addressbook and chat funct
 
 ```js
 _adp.example.com TXT "checksum=abc123&jsonld=https://example.com/adp.jsonld"
+
+_adp-checksum.example.com TXT "checksum=abc123&jsonld=https://example.com/adp.jsonld"
 ```
 
 ## GIST

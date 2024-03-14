@@ -1,0 +1,29 @@
+{
+  "@context": {
+    "adp": "http://webcivics.github.io/adp/ontdev/adp#",
+    "schema": "http://schema.org/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "ogp": "http://ogp.me/ns#"
+  },
+  "@type": "adp:Agent",
+  "adp:agentType": "naturalPerson",
+  "foaf:name": "Timothy C. Holborn",
+  "adp:hasOnlineAccount": [
+    {
+      "@type": "adp:OnlineAccount",
+      "adp:hasLinkedinAccount": "ubiquitous"
+    },
+    {
+      "@type": "adp:OnlineAccount",
+      "adp:hasTwitterAccount": "sailingdigital"
+    }
+  ],
+  "adp:hasCryptoAccount": [
+    {
+      "@type": "adp:CryptoAccount",
+      "adp:hasEcashAccount": "ecash:qrhrfvpm9x3tsq0uj09pzrfcc495h55clswp7tjp9c"
+    }
+  ],
+  "adp:hasDomain": "sailingdigital.com",
+  "schema:domain": "sailingdigital.com"
+}

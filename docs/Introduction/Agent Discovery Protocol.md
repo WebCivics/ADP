@@ -517,6 +517,7 @@ Provide clear examples in both Turtle and JSON-LD demonstrating basic and more c
 
 DNS TXT record _adp.example.com  TXT  "adp:signer <https://example.com/profile#me> ."
 
+ https://sailingdigital.com/.wellknown/agent.jsonld
 ```
 
 ADP file (turtle)

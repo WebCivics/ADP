@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON-LD Viewer</title>
+    <!-- Include JSON-LD Processor library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsonld/1.0.2/jsonld.js"></script>
+</head>
+<body>
+
+    <div id="jsonldContainer">
+        <h1>ADP Checker</h1>
+        <label for="domainInput">Enter Domain Name:</label>
+        <input type="text" id="domainInput" placeholder="example.com">
+        <button onclick="checkADP()">Check ADP</button>
+
+        </div>
+    <h1>JSON-LD Viewer</h1>
+    
+    <table id="jsonldTable" border="1">
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody id="jsonldTableBody"></tbody>
+    </table>
+
+    <script>
+        // JSON-LD data stored in the HTML file
+        let jsonldData = {
+            "@context": {
+                "schema": "http://schema.org/",
+                "foaf": "http://xmlns.com/foaf/0.1/",
+                "adp": "http://webcivics.github.io/adp/ontdev/adp#"
+            },
+            "@type": "adp:Agent",
+            "adp:agentType": "naturalPerson",
+            "foaf:name": "John Doe",
+            "adp:hasOnlineAccount": [
+                {
+                    "@type": "adp:OnlineAccount",
+                    "adp:hasLinkedinAccount": "john-doe-linkedin"
+                },
+                {
+                    "@type": "adp:OnlineAccount",
+                    "adp:hasTwitterAccount": "john_doe_twitter"
+                }
+            ]
+        };
+
+        // Function to process and present the JSON-LD graph in a table
+        function processAndPresentGraph() {
+            const tableBody = document.getElementById('jsonldTableBody');
+
+            // Process and append each key-value pair in the JSON-LD data
+            for (const key in jsonldData) {
+                const value = jsonldData[key];
+                const row = `<tr><td>${key}</td><td>${JSON.stringify(value)}</td></tr>`;
+                tableBody.innerHTML += row;
+            }
+        }
+
+        // Call the processing function when the document is ready
+        document.addEventListener('DOMContentLoaded', processAndPresentGraph);
+    </script>
+</body>
+</html>

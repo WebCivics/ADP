@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON-LD Processor</title>
+</head>
+<body>
+    <h1>JSON-LD Processor</h1>
+    <label for="domainInput">Enter Domain Name:</label>
+    <input type="text" id="domainInput" placeholder="example.com">
+    <button onclick="checkADP()">Check ADP</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody id="jsonldTableBody"></tbody>
+    </table>
+
+    <script>
+async function checkADP() {
+    const domainInput = document.getElementById('domainInput').value;
+    const resultElement = document.getElementById('result');
+
+    try {
+        // Fetch JSON-LD data from the specified URL
+        const jsonldData = await fetchJSONLD(domainInput);
+
+        // Fetch _adp entry from DNS
+        const dnsResponse = await fetchADPFromDNS(domainInput);
+        const dnsChecksum = dnsResponse.adp;
+
+        // Compare checksum values
+        if (jsonldData && jsonldData.adp && jsonldData.adp.checksum === dnsChecksum) {
+            resultElement.textContent = 'ADP Check Passed!';
+        } else {
+            resultElement.textContent = 'ADP Check Failed!';
+        }
+    } catch (error) {
+        resultElement.textContent = `Error: ${error.message}`;
+    }
+}
+
+            
+                    async function fetchADPFromDNS(domain) {
+                        const dnsUrl = `https://dns.google/resolve?name=_adp.${domain}&type=TXT`;
+            
+                        const response = await fetch(dnsUrl);
+                        const data = await response.json();
+            
+                        if (data.Answer && data.Answer[0] && data.Answer[0].data) {
+                            const txtRecord = data.Answer[0].data;
+                            return JSON.parse(txtRecord);
+                        } else {
+                            throw new Error('ADP entry not found in DNS');
+                        }
+                    }
+            
+                    async function fetchJSONLD(domain) {
+                        const jsonldUrl = `https://${domain}/adp.jsonld`;
+            
+                        const response = await fetch(jsonldUrl);
+            
+                        if (response.ok) {
+                            const jsonldData = await response.json();
+                            return jsonldData;
+                        } else {
+                            throw new Error(`Failed to fetch JSON-LD file: ${response.status}`);
+                        }
+                    }
+            const tableBody = document.getElementById('jsonldTableBody');
+
+            try {
+                // Fetch JSON-LD data from the specified URL
+                const jsonldData = await fetchJSONLD(domainInput);
+
+                // Clear previous table content
+                tableBody.innerHTML = '';
+
+                // Process and present the JSON-LD graph
+                processAndPresentGraph(jsonldData);
+
+                // Additional logic based on your requirements
+                // ...
+
+                resultElement.textContent = 'JSON-LD Processing Complete!';
+            } catch (error) {
+                resultElement.textContent = `Error: ${error.message}`;
+            }
+       
+        async function fetchJSONLD(domain) {
+            const jsonldUrl = `https://${domain}/adp.jsonld`;
+
+            const response = await fetch(jsonldUrl);
+
+            if (response.ok) {
+                const jsonldData = await response.json();
+                return jsonldData;
+            } else {
+                throw new Error(`Failed to fetch JSON-LD file: ${response.status}`);
+            }
+        }
+
+        function processAndPresentGraph(jsonldData) {
+            const tableBody = document.getElementById('jsonldTableBody');
+
+            // Process and append each key-value pair in the JSON-LD data
+            for (const key in jsonldData) {
+                const value = jsonldData[key];
+                const row = `<tr><td>${key}</td><td>${JSON.stringify(value)}</td></tr>`;
+                tableBody.innerHTML += row;
+            }
+
+            // Process and present your JSON-LD data
+            // You can access the data properties and structure here
+            console.log(jsonldData);
+        }
+    </script>
+</body>
+</html>
