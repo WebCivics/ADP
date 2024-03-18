@@ -1,6 +1,8 @@
 # ADP
 Agent Discovery Protocol
 
+![diagram](images/2024-03-02_diagram-2.png)
+
 ## Description
 
 The Agent Discovery Protocol (ADP) project, is intended to create a mechanism for providing discovery of information relating to a domain or sub-domain name, as an agent. 
