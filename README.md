@@ -1,7 +1,10 @@
 # ADP
-Agent Discovery Protocol
+**Agent Discovery Protocol**
 
 ![diagram](images/2024-03-02_diagram-2.png)
+
+Note: 'Agreements' method is out of scope.  
+
 
 ## Description
 
