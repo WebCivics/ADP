@@ -3,13 +3,26 @@ Agent Discovery Protocol
 
 ## Description
 
-This document specifies the Agent Discovery Protocol (ADP), a mechanism for describing agents, their associated Web of Data services, and relevant metadata at a given URL. ADP builds upon existing web standards and leverages RDF for rich, machine-readable descriptions but caters specifically to the decentralized and data-ownership-centric nature of emerging internet technologies and protocols.  The protocol supports agent identification, capability descriptions, service endpoints, access control information, and various classifications.  
-To enhance trust and verifiability, ADP accommodates the inclusion of Verifiable Credentials and supports DNS-based verification methods.
+The Agent Discovery Protocol (ADP) project, is intended to create a mechanism for providing discovery of information relating to a domain or sub-domain name, as an agent. 
+
+Their associated Web of Data services and relevant metadata at a Given URL. ADP is intended to be defined in a manner that builds upon existing web standards and leverages RDF for rich, machine-readable descriptions but ALSO seeks to caters specifically for natural persons, by supporting the means through which decentralized and data-ownership-centric nature of emerging internet technologies and protocols. Some of the early notes about related concepts include this [blogpost about social web](https://web.archive.org/web/20130122051820/http://jeffsayre.com/2010/09/15/web-3-0-smartups-the-social-web-and-the-web-of-data/) and TimBL's note on [Socially Aware Cloud Storage
+](https://web.archive.org/web/20130922093256/http://www.w3.org/DesignIssues/CloudStorage.html).  In this **Personal Domain Profile** use of ADP, the mechanism seeks to provide reliable pointers to online services that provide the functionality produced by projects that have been developing over many years to deliver these more advanced services.
+
+In other use-cases, the solution is intended to provide information that can be used to provide basic information that can be then employed by other agents, for some purpose.  The hope is that the method will provide a solution that can more easily support context related considerations in association to the management of the availability of online resources, and the means to discover end-points, but, moreover it is also considered that the general method provides a broad-range of potential future applications.
+
+Whilst The protocol supports agent identification, capability descriptions, service endpoints, access control information, and various classifications.  To enhance Trust and verifiability, ADP accommodates the inclusion of [Verifiable Credentials](https://en.wikipedia.org/wiki/Verifiable_credentials) and supports DNS-based Verification Methods.
 
 
 ## Background
 
-Few Background Notes.  There are some complex underlying considerations, associated to the notion of ADP.  
+Few Background Notes.  There are some complex underlying considerations, associated to the notion of ADP.  During initial discovery, it was found that one of the most common objections related to persons who were not aware of linked-data or semantic web.  As such, i have sought to provide more information below.
+
+
+## Related Work: WebID
+
+[WebID](https://www.w3.org/wiki/WebID)  (seeAlso: [foaf](https://en.wikipedia.org/wiki/FOAF))
+
+Work formerally known as [FOAF+SSL](https://web.archive.org/web/20100105172819/http://blogs.sun.com/bblfish/entry/more_on_authorization_in_foaf), led to the beginnings of 'web-id protocol' as [foaf+ssl](https://www.w3.org/wiki/Foaf%2Bssl) which then led to the [WebID Specifications](https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/index.html), including [WebID-TLS](https://dvcs.w3.org/hg/WebID/raw-file/tip/spec/tls-respec.html), WebID-RSA(https://github.com/solid/solid/blob/main/proposals/auth-webid-rsa.md) (better link preferred but not found yet), and [WebID-OIDC](https://github.com/solid/webid-oidc-spec).
 
 ### Semantic Web
 
