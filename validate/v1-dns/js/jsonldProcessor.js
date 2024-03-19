@@ -3,16 +3,25 @@
 import jsonld from 'https://cdn.skypack.dev/jsonld';
 
 export async function processAndPresentGraph(jsonldData) {
-    // Expand JSON-LD data
+  try {
+    // Check if jsonld is available
+    if (!jsonld) {
+      throw new Error('jsonld library not found. Please ensure it is imported correctly.');
+    }
+
+    // Existing JSON-LD processing logic
     const expanded = await jsonld.expand(jsonldData);
-    
-    // Flatten the expanded data
     const flattened = await jsonld.flatten(expanded);
-
-    // Convert the flattened data to a more readable format
-    const formattedData = JSON.stringify(flattened, null, 2);
-
-    // Display the formatted data in a pre tag
+    const formattedData = JSON.stringify(flattened, null, 2);  
     const outputContainer = document.getElementById('output-container');
     outputContainer.textContent = formattedData;
+
+  } catch (error) {
+    console.error('Error processing JSON-LD:', error);
+
+    // Display an error message to the user
+    const outputContainer = document.getElementById('output-container');
+    outputContainer.textContent = 'Error: JSON-LD library not available. Please check your imports.';
+  }
 }
+

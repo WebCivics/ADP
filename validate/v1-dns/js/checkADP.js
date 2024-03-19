@@ -22,12 +22,14 @@ async function checkADP() {
         }
     } catch (error) {
         resultElement.textContent = `Error: ${error.message}`;
+        console.error("Error in checkADP:", error);  // Log to console for more detail
+        resultElement.textContent = `Error: ${error.message}. Check the browser console for details.`; 
+  
     }
 }
 
 async function fetchADPFromFile(domain) {
-    const corsProxyUrl = 'https://corsproxy.io/';  // Use the CORS proxy if needed
-    const adpUrl = `${corsProxyUrl}https://${domain}/.well-known/adp.jsonld`;
+    const adpUrl = `https://${domain}/adp.jsonld`;
 
     const response = await fetch(adpUrl);
 
@@ -35,31 +37,35 @@ async function fetchADPFromFile(domain) {
         const adpData = await response.json();
         return adpData;
     } else {
-        throw new Error(`Failed to fetch ADP file: ${response.status}`);
+        throw new Error(`Failed to fetch ADP file: ${response.status} ${response.statusText}`);
     }
 }
-
 
 async function fetchADPFromDNS(domain) {
     const dnsUrl = `https://dns.google/resolve?name=_adp.${domain}&type=TXT`;
-
     const response = await fetch(dnsUrl);
-    const data = await response.json();
-
-    if (data.Answer && data.Answer[0] && data.Answer[0].data) {
-        const txtRecord = data.Answer[0].data;
-        return JSON.parse(txtRecord);
-    } else {
-        throw new Error('ADP entry not found in DNS');
+  
+    if (!response.ok) {
+       throw new Error(`Failed to fetch DNS record: ${response.status} ${response.statusText}`);
     }
-}
+  
+    const data = await response.json();
+  
+    if (data.Answer && data.Answer[0] && data.Answer[0].data) {
+      const sha256Hash = data.Answer[0].data.replace(/"/g, '');  // Remove quotes
+      return sha256Hash; 
+    } else {
+      throw new Error('ADP entry not found in DNS');
+    }
+  }
 
 function processAndPresentGraph(adpData, container) {
     // Use jsonld.js to process and present the graph
     jsonld.toRDF(adpData, { format: 'application/nquads' }, (err, nquads) => {
         if (err) {
             console.error('Error processing JSON-LD to RDF:', err);
-            return;
+            container.innerHTML = '<p>Error processing graph data. See browser console.</p>'; 
+            return; 
         }
 
         // Optionally, you can visualize the RDF data or handle it as needed

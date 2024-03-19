@@ -41,6 +41,16 @@ Semantic web involves many 'loosly coupled' components.  There are query languag
 
 Other Notes; [owl](https://en.wikipedia.org/wiki/Web_Ontology_Language), [rdfs](https://en.wikipedia.org/wiki/RDF_Schema), [rif](https://en.wikipedia.org/wiki/Rule_Interchange_Format), [shacl](https://en.wikipedia.org/wiki/SHACL), [TimBL Design Issues](https://web.archive.org/web/20240000000000*/https://www.w3.org/DesignIssues/)
 
+### How To See 'Semantic Web'
+
+[OpenLink Structured Data Sniffer (OSDS)](https://osds.openlinksw.com/)
+The OpenLink Structured Data Sniffer (OSDS) is a browser extension for Google Chrome, Microsoft Edge, Mozilla Firefox, Opera, and Vivaldi (with a build planned for Apple Safari) that unveils structured metadata embedded within HTML documents and web pages.
+
+
+### How to Generate Examples
+
+[Json-LD Playground](https://json-ld.org/playground/)
+
 
 ### Library Resources
 
