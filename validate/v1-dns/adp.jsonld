@@ -1,9 +1,9 @@
 {
   "@context": {
-    "adp": "http://webcivics.github.io/adp/ontdev/adp#",
-    "schema": "http://schema.org/",
-    "foaf": "http://xmlns.com/foaf/0.1/",
-    "ogp": "http://ogp.me/ns#"
+    "adp": "https://webcivics.github.io/adp/ontdev/adp#",
+    "schema": "https://schema.org/",
+    "foaf": "https://xmlns.com/foaf/0.1/",
+    "ogp": "https://ogp.me/ns#"
   },
   "@type": "adp:Agent",
   "adp:agentType": "naturalPerson",
