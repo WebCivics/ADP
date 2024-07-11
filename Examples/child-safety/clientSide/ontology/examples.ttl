@@ -1,0 +1,12 @@
+
+# Deny Access
+
+<http://www.pornhub.com> rdf:type ex:Website ;
+    rdfs:label "Pornhub" ;
+    dc:title "Pornhub" ;
+    dc:description "A website with adult content that is restricted to users over 18 years old." ;
+    ex:designedFor ex:Adults ;
+    ex:aboutTopic ex:Adults ;
+    ex:restrictedFor ex:Infants, ex:Toddlers, ex:Children, ex:Teens ;
+    ex:isRestrictedToOver18 "true"^^xsd:boolean .
+

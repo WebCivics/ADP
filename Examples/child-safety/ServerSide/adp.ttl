@@ -1,0 +1,9 @@
+@prefix ex: <http://example.org/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+<http://example.org/website>
+    dc:title "Example Website" ;
+    dc:description "This is an example website used for demonstration purposes." ;
+    ex:rating "PG" ;
+    ex:category "Educational" ;
+    ex:language "en" .

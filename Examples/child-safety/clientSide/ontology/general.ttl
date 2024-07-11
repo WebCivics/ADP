@@ -1,0 +1,127 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix schema: <http://schema.org/> .
+@prefix ex: <http://example.org/> .
+
+# Define the ontology class
+ex:ChildDevelopmentStage rdf:type owl:Class ;
+    rdfs:label "Child Development Stage" ;
+    rdfs:comment "A stage of child development with implications for online content" .
+
+# Define properties
+ex:hasStage rdf:type owl:ObjectProperty ;
+    rdfs:label "has stage" ;
+    rdfs:domain ex:ChildDevelopmentStage ;
+    rdfs:range ex:Stage .
+
+ex:hasCharacteristic rdf:type owl:ObjectProperty ;
+    rdfs:label "has characteristic" ;
+    rdfs:domain ex:Stage ;
+    rdfs:range ex:Characteristic .
+
+ex:hasContentImplication rdf:type owl:ObjectProperty ;
+    rdfs:label "has content implication" ;
+    rdfs:domain ex:Stage ;
+    rdfs:range ex:ContentImplication .
+
+# Define classes for stages, characteristics, and content implications
+ex:Stage rdf:type owl:Class ;
+    rdfs:label "Stage" ;
+    rdfs:comment "A specific stage of child development" .
+
+ex:Characteristic rdf:type owl:Class ;
+    rdfs:label "Characteristic" ;
+    rdfs:comment "Characteristics of a child at a specific stage of development" .
+
+ex:ContentImplication rdf:type owl:Class ;
+    rdfs:label "Content Implication" ;
+    rdfs:comment "Implications for online content at a specific stage of development" .
+
+# Define instances for each stage
+ex:Infancy rdf:type ex:Stage ;
+    rdfs:label "Infancy" ;
+    dc:description "0-2 years" ;
+    ex:hasCharacteristic ex:Infancy_Characteristics ;
+    ex:hasContentImplication ex:Infancy_ContentImplications .
+
+ex:EarlyChildhood rdf:type ex:Stage ;
+    rdfs:label "Early Childhood" ;
+    dc:description "3-5 years" ;
+    ex:hasCharacteristic ex:EarlyChildhood_Characteristics ;
+    ex:hasContentImplication ex:EarlyChildhood_ContentImplications .
+
+ex:MiddleChildhood rdf:type ex:Stage ;
+    rdfs:label "Middle Childhood" ;
+    dc:description "6-8 years" ;
+    ex:hasCharacteristic ex:MiddleChildhood_Characteristics ;
+    ex:hasContentImplication ex:MiddleChildhood_ContentImplications .
+
+ex:LateChildhood rdf:type ex:Stage ;
+    rdfs:label "Late Childhood" ;
+    dc:description "9-12 years" ;
+    ex:hasCharacteristic ex:LateChildhood_Characteristics ;
+    ex:hasContentImplication ex:LateChildhood_ContentImplications .
+
+ex:EarlyAdolescence rdf:type ex:Stage ;
+    rdfs:label "Early Adolescence" ;
+    dc:description "13-15 years" ;
+    ex:hasCharacteristic ex:EarlyAdolescence_Characteristics ;
+    ex:hasContentImplication ex:EarlyAdolescence_ContentImplications .
+
+ex:LateAdolescence rdf:type ex:Stage ;
+    rdfs:label "Late Adolescence" ;
+    dc:description "16-18 years" ;
+    ex:hasCharacteristic ex:LateAdolescence_Characteristics ;
+    ex:hasContentImplication ex:LateAdolescence_ContentImplications .
+
+# Define characteristics for each stage
+ex:Infancy_Characteristics rdf:type ex:Characteristic ;
+    rdfs:label "Infancy Characteristics" ;
+    dc:description "Rapid physical and sensory development. Limited cognitive abilities. High dependency on caregivers." .
+
+ex:EarlyChildhood_Characteristics rdf:type ex:Characteristic ;
+    rdfs:label "Early Childhood Characteristics" ;
+    dc:description "Developing language and motor skills. Beginning to understand basic concepts and relationships. High curiosity and imagination." .
+
+ex:MiddleChildhood_Characteristics rdf:type ex:Characteristic ;
+    rdfs:label "Middle Childhood Characteristics" ;
+    dc:description "Improved cognitive and language abilities. Developing a sense of independence and personal identity. Beginning to understand more complex concepts." .
+
+ex:LateChildhood_Characteristics rdf:type ex:Characteristic ;
+    rdfs:label "Late Childhood Characteristics" ;
+    dc:description "Developing critical thinking and reasoning skills. Increased interest in social interactions and peer relationships. Beginning to form personal opinions and values." .
+
+ex:EarlyAdolescence_Characteristics rdf:type ex:Characteristic ;
+    rdfs:label "Early Adolescence Characteristics" ;
+    dc:description "Greater emotional and intellectual development. Seeking independence and self-identity. More aware of and interested in societal issues." .
+
+ex:LateAdolescence_Characteristics rdf:type ex:Characteristic ;
+    rdfs:label "Late Adolescence Characteristics" ;
+    dc:description "Near-adult cognitive and emotional capabilities. Preparing for adult responsibilities and independence. Stronger sense of identity and values." .
+
+# Define content implications for each stage
+ex:Infancy_ContentImplications rdf:type ex:ContentImplication ;
+    rdfs:label "Infancy Content Implications" ;
+    dc:description "Content should be simple, colorful, and engaging with basic shapes and sounds. Educational games and videos that promote sensory experiences are suitable. Ensure content is free from any form of violence or complex themes." .
+
+ex:EarlyChildhood_ContentImplications rdf:type ex:ContentImplication ;
+    rdfs:label "Early Childhood Content Implications" ;
+    dc:description "Educational games and interactive stories that teach basic skills (letters, numbers, colors). Content should promote social skills, sharing, and empathy. Avoid content with scary or violent themes." .
+
+ex:MiddleChildhood_ContentImplications rdf:type ex:ContentImplication ;
+    rdfs:label "Middle Childhood Content Implications" ;
+    dc:description "Content can include more detailed stories and educational materials on various subjects (science, history). Interactive games that promote problem-solving and creativity. Content should still be free from intense violence and mature themes." .
+
+ex:LateChildhood_ContentImplications rdf:type ex:ContentImplication ;
+    rdfs:label "Late Childhood Content Implications" ;
+    dc:description "Educational content that challenges their thinking and expands their knowledge. Safe social platforms that teach responsible online behavior. Content should address real-world issues appropriately but avoid explicit material." .
+
+ex:EarlyAdolescence_ContentImplications rdf:type ex:ContentImplication ;
+    rdfs:label "Early Adolescence Content Implications" ;
+    dc:description "Content can explore more complex themes and provide in-depth information on various subjects. Platforms for safe social interactions and discussions about identity and personal growth. Content should encourage critical thinking and responsible behavior but avoid graphic violence and explicit content." .
+
+ex:LateAdolescence_ContentImplications rdf:type ex:ContentImplication ;
+    rdfs:label "Late Adolescence Content Implications" ;
+    dc:description "Content can include mature themes with appropriate guidance and context. Educational content that prepares them for adult life (career, relationships, finances). Encourage critical thinking, responsible online behavior, and awareness of digital footprints." .

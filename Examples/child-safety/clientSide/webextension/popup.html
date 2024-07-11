@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Rating Blocker Settings</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    label, input { display: block; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Settings</h1>
+  <label for="rating">Block websites with rating:</label>
+  <select id="rating">
+    <option value="G">G</option>
+    <option value="PG">PG</option>
+    <option value="M">M</option>
+    <option value="MA">MA</option>
+    <option value="R">R</option>
+    <option value="X">X</option>
+  </select>
+  <label for="password">Password:</label>
+  <input type="password" id="password">
+  <button id="save">Save</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>

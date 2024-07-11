@@ -38,6 +38,34 @@ Some Profile Examples;
 ## Examples
 
 ### Personal Profile
+NOTE: ADP is not intended to provide private, sensitive or permissive information.  ADP Can link to a seperate service that can then act to do so. 
+
+- Basic Personal Information 
+- Online Identifiers (ie: Social Media)
+- Crypto Accounts (ie: bitcoin address)
+- Online Data Storage Service (ie: solid server account)
+- Public Keys
+
+### Essential Services
+An essential service is a form of Humanitarian ICT domain or sub-domain and related services, that should be prioritised for availability at all times when the technical capacity to do so is available.  
+
+Examples of situations where this may be important.
+
+- Natural Disaster Recovery: Where only temporary Internet Services are able to be enabled, and the use of that service requires prioritisation of particular categories of Online Services.
+
+- Internet Shut-Down Events: Where the internet may be 'turned off' for some reason, there are some services that should remain on regardless.
+
+- War, Conflict, Sanctions, etc:  Where wide-spread availability of internet services is impaired for some reason, a defined class of services that are required to continue to be available regardless.
+
+#### Categories of Essential Services
+
+TBD
+
+### Content Moderation
+The content moderation function is intended to be employed by the end-user of online content and/or the last-mile internet connection user / subscriber (ie: within a K12 school network).  There is a known risk that these functions could be employed by other network participants, which would negatively impact. VPN technologies are able to route around local restrictions, whilst the intended purpose is to define restrictions by users (or their parents / guardians) on end-user devices.
+
+
+
 
 
 
